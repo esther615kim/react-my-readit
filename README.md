@@ -51,3 +51,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - react-testing-library
 
 - tsconfig https://kulshekhar.github.io/ts-jest/docs/getting-started/options/tsconfig
+
+- configuring jest `setupFiilesAfterEnv` https://jestjs.io/docs/configuration#setupfilesafterenv-array
+
+- typescripot eslint https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/recommended-requiring-type-checking.ts
