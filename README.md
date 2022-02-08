@@ -55,3 +55,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - configuring jest `setupFiilesAfterEnv` https://jestjs.io/docs/configuration#setupfilesafterenv-array
 
 - typescripot eslint https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/recommended-requiring-type-checking.ts
+
+- styled-components in TS https://blog.logrocket.com/using-styled-components-in-typescript-a-tutorial-with-examples/
