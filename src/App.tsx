@@ -26,15 +26,14 @@ const App: React.FC = () => {
     // <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}> </ThemeProvider>
     <BrowserRouter>
     <StyledApp>
-    <Routes>
+      <Profile />
+      <Layout />
+      <Routes>
           <Route path="/" element={< PostsPage/>} />
           <Route path="/create" element={<CreatePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/posts/:id" element={<DetailPage />} />
         </Routes>
-      <Profile />
-      <Layout />
-      <PostsPage />
       <BottomNav/>
     </StyledApp>
     </BrowserRouter>

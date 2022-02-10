@@ -1,10 +1,10 @@
 import { Paper, Stack, Button } from "@mui/material";
 import React,{useEffect, useState} from "react";
-import { StyledDiv } from "./posts.styled";
 import MessageIcon from "@mui/icons-material/Message";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { StyledDiv } from './posts.styled';
 
 // data 타입정의하기
 
@@ -20,6 +20,8 @@ interface IArticle{
 
 const Posts = () => {
 
+  const ARTICLE_ID = 3;
+
   const [articles,setArticles] = useState<IArticle[]|null>(null);
   useEffect(()=>{
     axios.get("https://ek-reddit.herokuapp.com/api/articles")
@@ -34,12 +36,13 @@ const Posts = () => {
     <StyledDiv>
       <h3>Recent Posts</h3>
       <Paper>
-        <Link to="/">
+        <Link to={`/posts/${ARTICLE_ID}`}>
         <h4>title </h4>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Est doloribus
           assumenda officia itaque in aspernatur autem porro
         </p>
+        </Link>
         <Stack
           pb={1}
           direction="row"
@@ -51,7 +54,7 @@ const Posts = () => {
           </Button>
           <Button startIcon={<MessageIcon />}>9 comments</Button>
         </Stack>
-        </Link>
+
       </Paper>
     </StyledDiv>
   );

@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import{Link, useParams} from 'react-router-dom';
+import { getSinglePost } from './../utils/api';
+import SinglePost from './../components/Posts/SinglePost';
 
 const DetailPage = () => {
   return (
-    <div>DetailPage</div>
+    <>
+    <SinglePost/>
+    </>
   )
 }
 

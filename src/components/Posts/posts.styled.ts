@@ -10,6 +10,10 @@ export const StyledDiv = styled.div`
     padding:1rem 1.6rem;
     border-top-right-radius:1.6rem;
     border-top-left-radius:1.6rem;
+    a{
+        text-decoration:none;
+        color:#212121;
+    }
     h3{
         text-align:left;
         color:#3d3f40;
