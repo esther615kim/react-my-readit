@@ -20,3 +20,6 @@ import {createContext, useContext,useEffect,useState} from 'react';
 // export const ArticleState =()=>{
 //     return useContext(Article);
 // }
+
+
+// 여기서 아티클, 코멘트를 저장하기

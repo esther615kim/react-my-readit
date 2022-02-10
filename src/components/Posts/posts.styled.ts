@@ -21,7 +21,7 @@ export const StyledDiv = styled.div`
     div{
         padding:0.2rem;
         padding-bottom:0.6rem;
-        height:10rem;
+        height: ${({ height }:{height?:string|undefined}) => height || "10rem"};
         margin-bottom:0.6rem;
     }
 `

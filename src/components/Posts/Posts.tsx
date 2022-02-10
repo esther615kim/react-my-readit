@@ -2,11 +2,11 @@ import { Paper, Stack, Button } from "@mui/material";
 import React,{useEffect, useState} from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import axios from 'axios';
+
 import { Link } from "react-router-dom";
 import { StyledDiv } from './posts.styled';
 
-// data 타입정의하기
+// context에서 articles 불러오기
 
 interface IArticle{
   article_id: number,
@@ -22,16 +22,6 @@ const Posts = () => {
 
   const ARTICLE_ID = 3;
 
-  const [articles,setArticles] = useState<IArticle[]|null>(null);
-  useEffect(()=>{
-    axios.get("https://ek-reddit.herokuapp.com/api/articles")
-    .then(({data})=>{
-      console.log(data.articles);
-    });
-  },[])
-
-  
-  
   return (
     <StyledDiv>
       <h3>Recent Posts</h3>

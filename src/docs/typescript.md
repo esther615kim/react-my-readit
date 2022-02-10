@@ -3,3 +3,6 @@ const { token } = useParams<{token?: string}>();
 
 https://stackoverflow.com/questions/64517983/useparams-in-typescript-does-not-allow-destructuring
 
+
+`destructuring`
+background: ${({ bg }:{bg:string}) => bg || "#fff"};
