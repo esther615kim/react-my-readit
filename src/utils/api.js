@@ -14,7 +14,6 @@ export const getAllPosts = ()=>{
 export const getTopics = ()=>{
     return dataApi.get("/topics")
     .then(({data})=>{ 
-        console.log(data.topics[0]);
         return data.topics;
     })
 }

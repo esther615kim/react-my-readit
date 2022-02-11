@@ -10,13 +10,13 @@ const PostCard = ({articles,selected}) => {
     const [cards,setCards] = useState([]);
     useEffect(()=>{
         if(selected){
-            const updatedCards = articles.filter(item => item.topic === selected);
-            setCards(updatedCards);
+            console.log(selected);
+            // const updatedCards = articles.filter(item => item.topic === selected);
+            // setCards(updatedCards);
         }else{
             setCards(articles);
         }
     },[selected]);
-    console.log(selected);
     
   return (
     <>
@@ -26,6 +26,7 @@ const PostCard = ({articles,selected}) => {
           return (
             <Paper key={item.article_id} className="post-box">
               <Link to={`/posts/${item.article_id}`}>
+                <Chip variant="outlined" label={item.topic}/>
                 <h4>{item.title}</h4>
                 <p>{item.body}</p>
               </Link>

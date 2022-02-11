@@ -14,18 +14,17 @@ const Posts = () => {
     getAllPosts()
     .then((res)=>{
       setArticles(res);
-      getTopics();
+      return getTopics();
     })
       .then((res) => {
-        return setTopics(res);
+        setTopics(res);
       })
-  }, []);
+  }, [articles]);
 
     const handleCategoryClick=(e)=>{
         e.preventDefault();
         e.stopPropagation();
-        setSelected(e.target.value);
-        console.log(selected);
+        setSelected(e.target.innerText);
     }
 
   return (
@@ -37,12 +36,11 @@ const Posts = () => {
         alignItems="center"
         spacing={1}
       >
-        {topics &&
-          topics.map((item) => {
+        {topics?.map((item) => {
             return <Chip 
             key={item.slug} 
             label={item.slug}
-            onClick={(e)=>{handleCategoryClick(e)}}
+            // onClick={(e)=>{handleCategoryClick(e)}}
             />
           })}
       </Stack>
