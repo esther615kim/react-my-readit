@@ -24,6 +24,8 @@ export const StyledDiv = styled.div`
     p{
         padding:0 0.2rem;
         overflow:hidden;
+        font-size:0.8rem;
+        line-height:1rem;
         height:4rem;
         text-overflow:ellipsis;
         -webkit-line-clamp: 3;

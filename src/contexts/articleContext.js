@@ -3,33 +3,26 @@ import {createContext, useContext} from 'react';
 import { getAllPosts, getTopics } from './../utils/api';
 
 
+const ArticleContext = createContext();
 
-const Article = createContext();
+export const ArticleProvider =({children})=>{
 
-const ArticleContext =({children})=>{
     const [articles, setArticles] = useState([]);
-    const [topics,setTopics] = useState([]);
+    const [loading,setLoading] = useState(true);
 
-    useEffect(()=>{
-      getAllPosts()
-         .then((res)=>{
-               setArticles(res);
-               getTopics();
-         })
-         .then((res)=>{
-           setTopics(res);
-         })
-    },[])
+    const setFetchedData = async() =>{
+      const updatedArticles = await getAllPosts();
+      setArticles(updatedArticles);
+      setLoading(pre=>false);
+    } 
+
 
     return(
-        <Article.Provider value={{articles,topics}}>
+        <ArticleContext.Provider value={{articles,loading,setFetchedData}}>
             {children}
-        </Article.Provider>
+        </ArticleContext.Provider>
     )
 }
 
-export default ArticleContext ;
+export default ArticleContext;
 
-export const ArticleProvider =()=>{
-    return useContext(Article);
-}

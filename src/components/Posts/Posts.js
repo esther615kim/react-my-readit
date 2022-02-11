@@ -1,25 +1,20 @@
 import { Stack, Chip } from "@mui/material";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { StyledDiv } from "./posts.styled";
-import { getAllPosts, getTopics } from "./../../utils/api";
-import ArticleContext from "./../../contexts/articleContext";
+import {getTopics } from "./../../utils/api";
 import PostCard from './PostCard';
 
 const Posts = () => {
-  const [articles, setArticles] = useState([]);
+
   const [topics, setTopics] = useState([]);
   const [selected,setSelected] =useState('');
 
   useEffect(() => {
-    getAllPosts()
-    .then((res)=>{
-      setArticles(res);
-      return getTopics();
-    })
+    getTopics()
       .then((res) => {
         setTopics(res);
       })
-  }, [articles]);
+  }, [topics]);
 
     const handleCategoryClick=(e)=>{
         e.preventDefault();
@@ -44,9 +39,7 @@ const Posts = () => {
             />
           })}
       </Stack>
-     <PostCard 
-     articles={articles}
-     selectedTopic={selected}/>
+     <PostCard />
     </StyledDiv>
   );
 };

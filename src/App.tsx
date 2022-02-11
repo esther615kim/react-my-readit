@@ -10,7 +10,7 @@ import CreatePage from './pages/CreatePage';
 import DetailPage from './pages/DetailPage';
 import ProfilePage from './pages/ProfilePage';
 import Profile from './components/Layout/Profile';
-import ArticleProvider  from "./contexts/articleContext";
+import { ArticleProvider } from './contexts/articleContext';
 
 const App: React.FC = () => {
   // dark/light theme

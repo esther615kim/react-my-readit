@@ -1,16 +1,10 @@
 import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/query';
-
-// import cartReducer from "./features/cartSlicer";
-import { articlesApi } from './../utils/articlesApi';
+import postsReducer from './features/postsSlicer'
 
 export const store= configureStore({
     reducer:{
-
-        [articlesApi.reducerPath]:articlesApi.reducer,
+        posts:postsReducer,
     },
-    middleware:(getDefaultMiddleware) =>(
-        getDefaultMiddleware().concat(articlesApi.middleware)
-        ),
 })
 setupListeners(store.dispatch); // = store.dispatch(productsFetch());
