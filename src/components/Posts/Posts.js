@@ -1,56 +1,54 @@
-import { Paper, Stack, Button } from "@mui/material";
-import React,{useEffect, useState,useContext} from "react";
-import MessageIcon from "@mui/icons-material/Message";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
-import { Link } from "react-router-dom";
-import { StyledDiv } from './posts.styled';
-import { getAllPosts } from './../../utils/api';
-
+import { Stack, Chip } from "@mui/material";
+import React, { useEffect, useState, useContext } from "react";
+import { StyledDiv } from "./posts.styled";
+import { getAllPosts, getTopics } from "./../../utils/api";
+import ArticleContext from "./../../contexts/articleContext";
+import PostCard from './PostCard';
 
 const Posts = () => {
   const [articles, setArticles] = useState([]);
+  const [topics, setTopics] = useState([]);
+  const [selected,setSelected] =useState('');
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllPosts()
-       .then((res)=>{
-             setArticles(res);
-       })
-  },[])
+    .then((res)=>{
+      setArticles(res);
+      getTopics();
+    })
+      .then((res) => {
+        return setTopics(res);
+      })
+  }, []);
 
-  console.log("아티클",articles[0]);
-
-
-  const ARTICLE_ID = 3;
+    const handleCategoryClick=(e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        setSelected(e.target.value);
+        console.log(selected);
+    }
 
   return (
     <StyledDiv>
-      {articles?(
-        articles.map(item =>{
-          return <Paper className="post-box">
-          <Link to={`/posts/${item.article_id}`}>
-          <h4>{item.title}</h4>
-          <p>
-            {item.body}
-          </p>
-          </Link>
-          <Stack className="stack"
-            pb={1}
-            direction="row"
-            justifyContent="space-evenly"
-            alignItems="center"
-          >
-            <Button startIcon={<FavoriteBorderIcon />}>
-              {item.votes} liked
-            </Button>
-            <Button startIcon={<MessageIcon />}>{item.comment} comments</Button>
-          </Stack>
-         </Paper>
-        })
-      ):(
-        <h3>loading...</h3>
-      )}
-     
+      <Stack
+        m={2}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={1}
+      >
+        {topics &&
+          topics.map((item) => {
+            return <Chip 
+            key={item.slug} 
+            label={item.slug}
+            onClick={(e)=>{handleCategoryClick(e)}}
+            />
+          })}
+      </Stack>
+     <PostCard 
+     articles={articles}
+     selectedTopic={selected}/>
     </StyledDiv>
   );
 };

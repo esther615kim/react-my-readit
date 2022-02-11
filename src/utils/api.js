@@ -11,6 +11,14 @@ export const getAllPosts = ()=>{
     })
 }
 
+export const getTopics = ()=>{
+    return dataApi.get("/topics")
+    .then(({data})=>{ 
+        console.log(data.topics[0]);
+        return data.topics;
+    })
+}
+
 // 503
 // export const getSinglePost = (id:number)=>{
 //     return dataApi.get(`articles/${id}`)

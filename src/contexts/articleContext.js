@@ -1,7 +1,6 @@
-import React, { useState, ReactNode,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {createContext, useContext} from 'react';
-import axios from 'axios';
-import { getAllPosts } from './../utils/api';
+import { getAllPosts, getTopics } from './../utils/api';
 
 
 
@@ -9,17 +8,21 @@ const Article = createContext();
 
 const ArticleContext =({children})=>{
     const [articles, setArticles] = useState([]);
+    const [topics,setTopics] = useState([]);
 
     useEffect(()=>{
       getAllPosts()
          .then((res)=>{
-            console.log(res); // fetched data
                setArticles(res);
+               getTopics();
+         })
+         .then((res)=>{
+           setTopics(res);
          })
     },[])
 
     return(
-        <Article.Provider value={{articles}}>
+        <Article.Provider value={{articles,topics}}>
             {children}
         </Article.Provider>
     )
@@ -27,6 +30,6 @@ const ArticleContext =({children})=>{
 
 export default ArticleContext ;
 
-export const ArticleState =()=>{
+export const ArticleProvider =()=>{
     return useContext(Article);
 }
