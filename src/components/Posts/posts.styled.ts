@@ -67,3 +67,7 @@ export const StyledDiv = styled.div`
         color:hotpink;
     }
 `
+
+export const StyledWrapper =styled.div`
+margin-left:2rem;
+`

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { StyledDiv } from "./posts.styled";
 import {getTopics } from "./../../utils/api";
 import PostCard from './PostCard';
+import SortBy from './SortBy';
 
 const Posts = () => {
 
@@ -26,7 +27,7 @@ const Posts = () => {
     <StyledDiv>
 
       {/* CATEGORIES */}
-      <div style={{background:"yellow"}}>
+      <div>
       <Stack 
         m={2}
         direction="row"
@@ -43,8 +44,11 @@ const Posts = () => {
             onClick={(e)=>{handleCategoryClick(e)}}
             />
           })}
+           <SortBy/>
+          
       </Stack>
       </div>
+
       {/* POSTS */}
      <PostCard selected={selected}/>
     </StyledDiv>
