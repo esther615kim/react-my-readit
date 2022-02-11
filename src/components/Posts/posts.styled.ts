@@ -20,8 +20,11 @@ export const StyledDiv = styled.div`
         padding: 0 1rem;
         text-align:left;
         font-size:rem;
-        color:#3d3f40;
+        max-width:20rem;
         margin-bottom:0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     span{
         display:block;
@@ -35,7 +38,7 @@ export const StyledDiv = styled.div`
         overflow:hidden;
         font-size:0.8rem;
         line-height:1rem;
-        height:3.8rem;
+        height:4rem;
         text-overflow:ellipsis;
         -webkit-line-clamp: 3;
         
@@ -71,3 +74,4 @@ export const StyledDiv = styled.div`
 export const StyledWrapper =styled.div`
 margin-left:2rem;
 `
+

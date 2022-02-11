@@ -22,14 +22,14 @@ const PostCard = ({selected}) => {
     },[selected,loading]);
 
   if(loading) return <h3>loading...</h3>;
-  
+
   if(!loading) return(
     <Grid container justifyContent="center"
     alignItems="center">
     {articles.map((item)=>{
           return <Grid key={item.article_id} item xs={12} sm={5} ml={4}>
           <Paper  className="post-box">
-               <Link to={`/posts/${item.article_id}`}>
+               <Link to={`/posts/${item.article_id}`} state={{from:item}}>
       <h4>{item.title}</h4>
       <span>#{item.topic}</span>
       <p>
