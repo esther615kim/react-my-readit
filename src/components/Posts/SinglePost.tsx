@@ -3,7 +3,6 @@ import React from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { StyledDiv } from './posts.styled';
-import { getSinglePost } from './../../utils/api';
 
 
 interface IArticle{
@@ -18,9 +17,8 @@ interface IArticle{
 
 const SinglePost= () => {
 
-  const ARTICLE_ID:number = 3;
+  const ARTICLE_ID = 3;
 
-  getSinglePost(ARTICLE_ID);
   
   return (
     <StyledDiv >
