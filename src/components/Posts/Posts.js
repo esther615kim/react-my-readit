@@ -24,7 +24,10 @@ const Posts = () => {
 
   return (
     <StyledDiv>
-      <Stack
+
+      {/* CATEGORIES */}
+      <div style={{background:"yellow"}}>
+      <Stack 
         m={2}
         direction="row"
         justifyContent="center"
@@ -41,6 +44,8 @@ const Posts = () => {
             />
           })}
       </Stack>
+      </div>
+      {/* POSTS */}
      <PostCard selected={selected}/>
     </StyledDiv>
   );

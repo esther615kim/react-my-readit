@@ -21,9 +21,5 @@ by esther615kim
 - npm install --save-dev @testing-library/react @testing-library/user-event @testing-library/dom @testing-library/jest-dom
 - npx eslint --init
 
-- `added`
--
--
-
 - `changed`
 - .eslintrc.js add  "plugin:@typescript-eslint/recommended-requiring-type-checking"
