@@ -1,4 +1,4 @@
-import { Paper, Stack, Button, Chip } from "@mui/material";
+import { Paper, Stack, Button, Grid } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -13,8 +13,6 @@ const PostCard = () => {
     useEffect(()=>{
 
         setFetchedData();
-        console.log("아티클",articles.length);
-        console.log(loading);
         // if(selected){
         //     console.log(selected);
         //     // const updatedCards = articles.filter(item => item.topic === selected);
@@ -26,11 +24,16 @@ const PostCard = () => {
 
   if(loading) return <h3>loading...</h3>;
   if(!loading) return(
-      <>{articles.map((item)=>{
-          return <Paper key={item.article_id} className="post-box">
+    <Grid container   justifyContent="center"
+    alignItems="center">
+    {articles.map((item)=>{
+          return <Grid item xs={12} sm={5} ml={4}>
+          <Paper key={item.article_id} className="post-box">
                <Link to={`/posts/${item.article_id}`}>
       <h4>{item.title}</h4>
-      <p>{item.body}</p>
+      <span>#{item.topic}</span>
+      <p>
+          {item.body}</p>
     </Link>
     <Stack
       className="stack"
@@ -47,8 +50,9 @@ const PostCard = () => {
       </Button>
     </Stack>
           </Paper>
+          </Grid> 
       })}
-        </>
+       </Grid>  
   )
 
 //   if(!loading) return <>{articles.map((item) =>{
