@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Box } from '@mui/material';
 
 export const StyledDiv = styled.div`
 
@@ -75,3 +76,38 @@ export const StyledWrapper =styled.div`
 margin-left:2rem;
 `
 
+export const StyledBox = styled(Box)`
+height:100%;
+    color: #212121;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #fff;
+    border-top-right-radius:1.6rem;
+    border-top-left-radius:1.6rem;
+    .author-box{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin-top:2rem;
+        padidng-bottom:1rem;
+        h5{
+            padding:0;
+            margin:0;
+        }
+    }
+    span{
+        display:block;
+        text-align:right;
+        font-size:0.6rem;
+        margin:0;
+    }
+    p{
+        margin-top:1rem;
+        text-indent:20px;
+        overflow:hidden;
+        font-size:0.9rem;
+        line-height:1rem;
+        text-align:justify;
+        min-height:12rem;
+
+    }
+`
