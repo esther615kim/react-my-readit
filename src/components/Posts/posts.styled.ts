@@ -8,6 +8,10 @@ export const StyledDiv = styled.div`
     background-color: #fff;
     border-top-right-radius:1.6rem;
     border-top-left-radius:1.6rem;
+
+    .chip:hover{
+        background:yellow;
+    }
     a{
         text-decoration:none;
         color:#212121;
@@ -43,9 +47,10 @@ export const StyledDiv = styled.div`
         position:relative;
         max-width:30rem;
         margin-right:0;
-        padding-bottom:0.8rem;
+        padding:0.5rem 0;
         height: ${({ height }:{height?:string|undefined}) => height || "10rem"};
         flex-wrap:wrap;
+        margin-bottom:0.4rem;
     }
     button{
         font-size:0.7rem;

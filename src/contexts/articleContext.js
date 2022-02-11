@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import {createContext, useContext} from 'react';
-import { getAllPosts, getTopics } from './../utils/api';
+import React, { useState } from "react";
+import {createContext} from 'react';
+import { getAllPosts, getPostsByTopic } from './../utils/api';
 
 
 const ArticleContext = createContext();
@@ -16,9 +16,14 @@ export const ArticleProvider =({children})=>{
       setLoading(pre=>false);
     } 
 
+    const filterByTopic = async(topic) =>{
+      const updatedByTopic = await getPostsByTopic(topic);
+      setArticles(updatedByTopic); // better to seperate it?
+      setLoading(pre=>false);
+    } 
 
     return(
-        <ArticleContext.Provider value={{articles,loading,setFetchedData}}>
+        <ArticleContext.Provider value={{articles,loading,setFetchedData,filterByTopic}}>
             {children}
         </ArticleContext.Provider>
     )

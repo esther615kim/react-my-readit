@@ -7,19 +7,19 @@ import PostCard from './PostCard';
 const Posts = () => {
 
   const [topics, setTopics] = useState([]);
-  const [selected,setSelected] =useState('');
+  const [selected,setSelected] =useState("all");
 
   useEffect(() => {
     getTopics()
       .then((res) => {
         setTopics(res);
       })
-  }, [topics]);
+  }, [topics,selected]);
 
     const handleCategoryClick=(e)=>{
         e.preventDefault();
         e.stopPropagation();
-        setSelected(e.target.innerText);
+        setSelected(e.target.innerText.toLowerCase());
     }
 
   return (
@@ -31,15 +31,17 @@ const Posts = () => {
         alignItems="center"
         spacing={1}
       >
+        <Chip className="chip" label="ALL" onClick={(e)=>{handleCategoryClick(e)}}/>
         {topics?.map((item) => {
             return <Chip 
+            className="chip"
             key={item.slug} 
             label={item.slug}
-            // onClick={(e)=>{handleCategoryClick(e)}}
+            onClick={(e)=>{handleCategoryClick(e)}}
             />
           })}
       </Stack>
-     <PostCard />
+     <PostCard selected={selected}/>
     </StyledDiv>
   );
 };

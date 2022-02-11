@@ -1,34 +1,34 @@
 import { Paper, Stack, Button, Grid } from "@mui/material";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import MessageIcon from "@mui/icons-material/Message";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
-import { getAllPosts, getTopics } from "./../../utils/api";
+import { getAllPosts } from "./../../utils/api";
 import ArticleContext from './../../contexts/articleContext';
 
 
-const PostCard = () => {
-    const [cards,setCards] = useState([]);
-    const {articles,loading,setFetchedData} = useContext(ArticleContext);
+const PostCard = ({selected}) => {
+
+    const {articles,loading,setFetchedData,filterByTopic} = useContext(ArticleContext);
     useEffect(()=>{
 
-        setFetchedData();
-        // if(selected){
-        //     console.log(selected);
-        //     // const updatedCards = articles.filter(item => item.topic === selected);
-        //     // setCards(updatedCards);
-        // }else{
-        //     setCards(articles);
-        // }
-    },[loading]);
+        if(selected==="all"){
+            setFetchedData();
+        }
+        else{
+            filterByTopic(selected);
+            console.log(selected,articles);
+        }
+
+    },[selected,loading]);
 
   if(loading) return <h3>loading...</h3>;
   if(!loading) return(
-    <Grid container   justifyContent="center"
+    <Grid container justifyContent="center"
     alignItems="center">
     {articles.map((item)=>{
-          return <Grid item xs={12} sm={5} ml={4}>
-          <Paper key={item.article_id} className="post-box">
+          return <Grid key={item.article_id} item xs={12} sm={5} ml={4}>
+          <Paper  className="post-box">
                <Link to={`/posts/${item.article_id}`}>
       <h4>{item.title}</h4>
       <span>#{item.topic}</span>

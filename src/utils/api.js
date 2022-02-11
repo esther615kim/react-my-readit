@@ -18,6 +18,13 @@ export const getTopics = ()=>{
     })
 }
 
+export const getPostsByTopic = (topic)=>{
+    return dataApi.get(`/articles?topic=${topic}`)
+    .then(({data})=>{ 
+        return data.articles;
+    })
+}
+
 // 503
 // export const getSinglePost = (id:number)=>{
 //     return dataApi.get(`articles/${id}`)
