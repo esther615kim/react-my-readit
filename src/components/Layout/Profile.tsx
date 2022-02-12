@@ -4,7 +4,7 @@ import { IconButton } from '@mui/material';
 
 const Profile = () => {
   return <div style={{padding:"0.4rem",color:"#fff"}}>
-      <IconButton sx={{color:"#fff"}}>
+      <IconButton sx={{color:"#f26805"}}>
           <FaceIcon />
       </IconButton>
       <h4 style={{padding:0, margin:"0 0 0.2rem"}}>my readit</h4>

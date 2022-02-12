@@ -10,6 +10,7 @@ export const ArticleProvider =({children})=>{
     const [articles, setArticles] = useState([]);
     const [loading,setLoading] = useState(true);
 
+
     const setFetchedData = async() =>{
       const updatedArticles = await getAllPosts();
       setArticles(updatedArticles);
@@ -22,8 +23,10 @@ export const ArticleProvider =({children})=>{
       setLoading(pre=>false);
     } 
 
+
     return(
-        <ArticleContext.Provider value={{articles,loading,setFetchedData,filterByTopic}}>
+        <ArticleContext.Provider 
+        value={{articles,loading,setFetchedData,filterByTopic}}>
             {children}
         </ArticleContext.Provider>
     )

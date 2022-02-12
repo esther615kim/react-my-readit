@@ -21,10 +21,10 @@ const SinglePost = ({item}) => {
   const { id } = useParams();
   const location = useLocation();
   const {from} = location.state;
-  console.log("I brought this",from);
+
   return (
     <StyledBox>
-         <div class="author-box">
+         <div className="author-box">
       <Avatar className="svg"
       // src="/static/images/avatar/1.jpg" 
       sx={{ bgcolor: lime[200], width:50,height:50 }}>

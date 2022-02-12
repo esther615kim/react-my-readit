@@ -16,6 +16,7 @@ export const StyledDiv = styled.div`
     a{
         text-decoration:none;
         color:#212121;
+
     }
     h4{
         padding: 0 1rem;
@@ -42,6 +43,8 @@ export const StyledDiv = styled.div`
         height:4rem;
         text-overflow:ellipsis;
         -webkit-line-clamp: 3;
+        text-align:justify;
+        text-indent:10px;
         
     }
     .css-11e3kdx-MuiGrid-root{
@@ -61,14 +64,14 @@ export const StyledDiv = styled.div`
         padding:0;
     }
     .stack{
-        background-color:#fff;
         position:absolute;
+        padding:0.2rem;
         bottom:0;
-        left:0.2rem;
+        left:0rem;
         right:0.2rem;
     }
-    button:first-child{
-        color:hotpink;
+    .liked{
+        color:#f26805;
     }
 `
 

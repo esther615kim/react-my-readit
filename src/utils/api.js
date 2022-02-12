@@ -25,6 +25,21 @@ export const getPostsByTopic = (topic)=>{
     })
 }
 
+export const getCommentsByPost = (article_id)=>{
+    return dataApi.get("/comments")
+    .then(({data})=>{ 
+        console.log(data.comments);
+        // return data.articles;
+    })
+}
+
+//404
+export const patchVotetoArticle = (article_id,number) =>{
+    console.log(article_id,number);
+    return dataApi.patch(`/article/${article_id}`,{inc_vote:number})
+    .then((res)=>console.log(res));
+}
+
 // 503
 // export const getSinglePost = (id:number)=>{
 //     return dataApi.get(`articles/${id}`)
