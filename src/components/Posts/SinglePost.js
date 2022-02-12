@@ -16,6 +16,7 @@ import { useParams,useLocation } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Chip } from '@mui/material/';
 import { lime } from '@mui/material/colors';
+import Comments from './Comments';
 
 const SinglePost = ({item}) => {
   const { id } = useParams();
@@ -46,17 +47,7 @@ const SinglePost = ({item}) => {
         <p>{from.body}</p>
 
         {/* COMMENTS */}
-        <div>
-          <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <h4>9 comments</h4>
-            </AccordionSummary>
-
-            <AccordionDetails>
-              
-            </AccordionDetails>
-          </Accordion>
-        </div>
+<Comments/>
         </Container>
       </Paper>
     </StyledBox>
