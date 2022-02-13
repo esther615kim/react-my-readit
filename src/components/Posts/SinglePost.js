@@ -4,7 +4,7 @@ import { StyledBox } from "./posts.styled";
 import { useParams, useLocation } from "react-router-dom";
 import { Chip } from "@mui/material/";
 import { lime } from "@mui/material/colors";
-import Comments from "./Comments";
+import Comments from './Comments/index';
 
 const SinglePost = ({ item }) => {
   const { id } = useParams();

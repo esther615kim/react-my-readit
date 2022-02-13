@@ -1,14 +1,17 @@
-import { Paper, Stack, Button, Grid } from "@mui/material";
-import React, { useEffect, useContext,useState} from "react";
-import MessageIcon from "@mui/icons-material/Message";
+import { Paper, Stack, Button, Grid, Typography } from "@mui/material";
+import React, { useEffect, useContext, useState } from "react";
+import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import ArticleContext from "./../../contexts/articleContext";
-import { patchVotetoArticle } from '../../utils/api';
+import { patchVotetoArticle } from "../../utils/api";
+import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
+import { StyledStack } from "./Comments/comments.styled";
 
 const PostCard = ({ selected }) => {
-  const { articles, loading, setFetchedData, filterByTopic } = useContext(ArticleContext);
-  const [likedCount, setLikedCount] = useState()
+  const { articles, loading, setFetchedData, filterByTopic } =
+    useContext(ArticleContext);
+  const [likedCount, setLikedCount] = useState();
 
   useEffect(() => {
     if (selected === "all") {
@@ -19,18 +22,17 @@ const PostCard = ({ selected }) => {
     }
   }, [selected, loading]);
 
-
-  const handleIncVote = async(id,votes)=>{
-    const inc_vote =1;
-    const dec_vote =-1;
-    console.log("현제보트",votes);
+  const handleIncVote = async (id, votes) => {
+    const inc_vote = 1;
+    const dec_vote = -1;
+    console.log("현제보트", votes);
     // try{
 
     //     setLikedCount(prev=> prev+1);
     //     const res = await patchVotetoArticle(id,inc_vote);
     //   }catch(err){
     //   console.log(err)};
-  }
+  };
 
   if (loading) return <h3>loading...</h3>;
 
@@ -47,31 +49,31 @@ const PostCard = ({ selected }) => {
                   <p>{item.body}</p>
                 </Link>
 
-                <Stack
-                  className="stack"
-                  pb={1}
-                  direction="row"
-                  justifyContent="space-evenly"
-                  alignItems="center"
-                >
-                  <Link to={`/posts/${item.article_id}`} state={{ from: item }}>
-                    <Button startIcon={<MessageIcon />}>
-                      {item.comment} comments
-                    </Button>
-                  </Link>
+                  <div style={{display:"flex", flexDirection:"row", fontSize:"0.6rem"}}
+                  >
+                    <StyledStack direction="row" alignItems="center">
+                    <ArrowUpward
+                      className="arrow"
+                      color="warning"
+                      size="small"
+                    />
+                    <span style={{fontSize:12}}>{item.votes}</span>
+                    <ArrowDownward
+                      className="arrow"
+                      color="primary"
+                      size="small"
+                    />
+                    </StyledStack>
 
-                  {/* LIKE BUTTON */}
-                  <Button className="liked"
+                    <Link
+                      to={`/posts/${item.article_id}`}
+                      state={{ from: item }}
+                    >
+                    <Button color="inherit"startIcon={<StickyNote2Icon/>}>3 comments</Button>
+                    </Link>
 
-                  startIcon={<FavoriteBorderIcon
-                  onClick={
-                      ()=>{
-                        handleIncVote(item.article_id,item.votes)
-                      }
-                  }/>}>
-                    {item.votes}
-                  </Button>
-                </Stack>
+                  </div>
+
               </Paper>
             </Grid>
           );

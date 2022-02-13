@@ -11,7 +11,8 @@ export const StyledDiv = styled.div`
     border-top-left-radius:1.6rem;
 
     .chip:hover{
-        background:yellow;
+        background:#212121;
+        color:#fff;
     }
     a{
         text-decoration:none;
@@ -36,7 +37,7 @@ export const StyledDiv = styled.div`
         padding:0 1rem;
     }
     p{
-        padding:0 1rem;
+        padding:0 1.6rem;
         overflow:hidden;
         font-size:0.8rem;
         line-height:1rem;
@@ -44,7 +45,6 @@ export const StyledDiv = styled.div`
         text-overflow:ellipsis;
         -webkit-line-clamp: 3;
         text-align:justify;
-        text-indent:10px;
         
     }
     .css-11e3kdx-MuiGrid-root{

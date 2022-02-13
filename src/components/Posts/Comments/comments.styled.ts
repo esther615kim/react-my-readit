@@ -25,13 +25,15 @@ h6{
 }
 p{
 min-height:2rem;
+text-indent:0;
+padding:0.2rem;
 }
 `
 export const StyledStack  = styled(Stack)`
 position:absolute;
 right:0.2rem;
 .arrow{
-    margin:0.4rem;
+    margin:0.2rem;
     font-size:0.8rem;
 }
 `

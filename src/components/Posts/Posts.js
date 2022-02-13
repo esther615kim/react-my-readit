@@ -45,10 +45,8 @@ const Posts = () => {
             />
           })}
            <SortBy/>
-          
       </Stack>
       </div>
-
       {/* POSTS */}
      <PostCard selected={selected}/>
     </StyledDiv>

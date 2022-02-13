@@ -40,6 +40,11 @@ export const patchVotetoArticle = (article_id,number) =>{
     .catch((err)=>console.log(err));
 }
 
+
+export const patchVotestoComment =(comment_id,vote)=>{
+    console.log(comment_id,vote);
+    
+}
 // 503
 // export const getSinglePost = (id:number)=>{
 //     return dataApi.get(`articles/${id}`)
