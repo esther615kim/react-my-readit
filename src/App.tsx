@@ -11,6 +11,7 @@ import DetailPage from './pages/DetailPage';
 import ProfilePage from './pages/ProfilePage';
 import Profile from './components/Layout/Profile';
 import { ArticleProvider } from './contexts/articleContext';
+import { AuthProvider } from "./contexts/authContext";
 
 const App: React.FC = () => {
   // dark/light theme
@@ -25,6 +26,7 @@ const App: React.FC = () => {
 
   return (
     // <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}> </ThemeProvider>
+    <AuthProvider>
     <ArticleProvider>
     <BrowserRouter>
     <StyledApp>
@@ -40,6 +42,7 @@ const App: React.FC = () => {
     </StyledApp>
     </BrowserRouter>
     </ArticleProvider>
+    </AuthProvider>
   );
 };
 

@@ -18,6 +18,15 @@ export const getTopics = ()=>{
     })
 }
 
+//404
+export const patchVotetoArticle = (article_id,number) =>{
+    console.log(article_id,number);
+    return dataApi.patch(`/articles/${article_id}`,{"votes":number})
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err));
+}
+
+
 export const getPostsByTopic = (topic)=>{
     return dataApi.get(`/articles?topic=${topic}`)
     .then(({data})=>{ 
@@ -32,14 +41,6 @@ export const getCommentsByPost = (id)=>{
     })
 }
 
-//404
-export const patchVotetoArticle = (article_id,number) =>{
-    console.log(article_id,number);
-    return dataApi.patch(`/articles/${article_id}`,{"votes":number})
-    .then((res)=>console.log(res))
-    .catch((err)=>console.log(err));
-}
-
 
 export const patchVotestoComment =(comment_id,vote)=>{
     console.log(comment_id,vote);
@@ -51,10 +52,26 @@ export const patchVotestoComment =(comment_id,vote)=>{
 }
 // 503
 export const getSinglePost = (id)=>{
-    console.log("시작");
     return dataApi.get(`articles/${id}`)
     .then(({data})=>{
         console.log(data.article);
         return data.article;
+    })
+}
+
+//users
+export const getAllUsers = ()=>{
+    return dataApi.get("/users")
+    .then(({data})=>{ 
+        console.log("all users",data.users);
+        return data.users;
+    })
+}
+
+export const getByUsername = (username)=>{
+    return dataApi.get(`users/${username}`)
+    .then(({data})=>{
+        console.log(data.user);
+        return data.user;
     })
 }
