@@ -35,7 +35,7 @@ export const getCommentsByPost = (id)=>{
 //404
 export const patchVotetoArticle = (article_id,number) =>{
     console.log(article_id,number);
-    return dataApi.patch(`/article/${article_id}`,{inc_vote:number})
+    return dataApi.patch(`/articles/${article_id}`,{"votes":number})
     .then((res)=>console.log(res))
     .catch((err)=>console.log(err));
 }
@@ -43,12 +43,18 @@ export const patchVotetoArticle = (article_id,number) =>{
 
 export const patchVotestoComment =(comment_id,vote)=>{
     console.log(comment_id,vote);
-    
+    return dataApi.patch(`/comments/${comment_id}`,{"votes":vote})
+    .then(({data})=> {
+        console.log(data.article.votes);
+        return data.article.votes;
+    })
 }
 // 503
-// export const getSinglePost = (id:number)=>{
-//     return dataApi.get(`articles/${id}`)
-//     .then(({data})=>{
-//         console.log(data.article);
-//     })
-// }
+export const getSinglePost = (id)=>{
+    console.log("시작");
+    return dataApi.get(`articles/${id}`)
+    .then(({data})=>{
+        console.log(data.article);
+        return data.article;
+    })
+}

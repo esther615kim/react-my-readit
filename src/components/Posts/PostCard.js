@@ -20,19 +20,9 @@ const PostCard = ({ selected }) => {
       filterByTopic(selected);
       console.log(selected, articles);
     }
+
   }, [selected, loading]);
 
-  const handleIncVote = async (id, votes) => {
-    const inc_vote = 1;
-    const dec_vote = -1;
-    console.log("현제보트", votes);
-    // try{
-
-    //     setLikedCount(prev=> prev+1);
-    //     const res = await patchVotetoArticle(id,inc_vote);
-    //   }catch(err){
-    //   console.log(err)};
-  };
 
   if (loading) return <h3>loading...</h3>;
 
@@ -69,7 +59,7 @@ const PostCard = ({ selected }) => {
                       to={`/posts/${item.article_id}`}
                       state={{ from: item }}
                     >
-                    <Button color="inherit"startIcon={<StickyNote2Icon/>}>3 comments</Button>
+                    <Button color="inherit"startIcon={<StickyNote2Icon/>}>{item.comment_count} comments</Button>
                     </Link>
 
                   </div>
