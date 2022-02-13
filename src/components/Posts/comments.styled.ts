@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 
 export const StyledDiv = styled.div`
 text-align:left;
+
 .submit{
     margin:1rem 0;
 }
@@ -10,6 +11,7 @@ h6{
     font-weight:600;
 }
 .user-box{
+    padding-top:1rem;
     display:flex;
     align-items:center;
     h5,h6{
@@ -20,5 +22,6 @@ h6{
     }
 }
 p{
+min-height:2rem;
 }
 `

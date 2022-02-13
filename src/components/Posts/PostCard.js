@@ -24,12 +24,12 @@ const PostCard = ({ selected }) => {
     const inc_vote =1;
     const dec_vote =-1;
     console.log("현제보트",votes);
-    try{
+    // try{
 
-        setLikedCount(prev=> prev+1);
-        const res = await patchVotetoArticle(id,inc_vote);
-      }catch(err){
-      console.log(err)};
+    //     setLikedCount(prev=> prev+1);
+    //     const res = await patchVotetoArticle(id,inc_vote);
+    //   }catch(err){
+    //   console.log(err)};
   }
 
   if (loading) return <h3>loading...</h3>;
