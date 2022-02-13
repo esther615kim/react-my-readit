@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box } from '@mui/material';
+import { Box,Stack } from '@mui/material';
 
 export const StyledDiv = styled.div`
 text-align:left;
@@ -11,7 +11,9 @@ h6{
     font-weight:600;
 }
 .user-box{
+
     padding-top:1rem;
+    position:relative;
     display:flex;
     align-items:center;
     h5,h6{
@@ -23,5 +25,13 @@ h6{
 }
 p{
 min-height:2rem;
+}
+`
+export const StyledStack  = styled(Stack)`
+position:absolute;
+right:0.2rem;
+.arrow{
+    margin:0.4rem;
+    font-size:0.8rem;
 }
 `

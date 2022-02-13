@@ -1,9 +1,11 @@
 import React,{useContext,useState,useEffect} from 'react'
-import { Divider, OutlinedInput, FormControl,Button, Avatar,Box,LinearProgress } from "@mui/material";
-import { StyledDiv } from './comments.styled';
+import { Divider, OutlinedInput, FormControl,Button, Avatar,Box,LinearProgress,Stack} from "@mui/material";
+import { StyledDiv, StyledStack } from './comments.styled';
 import CommentContext from '../../contexts/comments/commentContext';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { getCommentsByPost } from '../../utils/api';
+
+import {ArrowUpward, ArrowDownward} from '@mui/icons-material';
 
 const Comments = ({id}) => {
   const [comments, setComments] = useState(null);
@@ -37,7 +39,6 @@ const Comments = ({id}) => {
         <Button className="submit" variant="contained" color="inherit" size="small">
             Submit
         </Button>
-
               {/* COMMENT LIST */}
       </FormControl>
       {comments.map((item)=>{
@@ -48,9 +49,17 @@ const Comments = ({id}) => {
           <div>
           <h5>{item.author}</h5>
           <h6>{item.created_at}</h6>
-              </div>    
+              </div>
+              <StyledStack   direction="row"
+  justifyContent="center"
+  alignItems="center">
+              <ArrowUpward className="arrow" color="warning" size="small"/>
+                <span>{item.votes}</span>
+                <ArrowDownward className="arrow" color="primary" size="small"/>
+                </StyledStack>  
           </div>
             <p>{item.body}</p>
+
           <Divider/>
       </Box>
         )
