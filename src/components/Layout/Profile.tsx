@@ -11,7 +11,7 @@ const Profile = () => {
   const {loggedin} = useContext(AuthContext);
 
   return <StyledDiv>
-     <Link to={"login"} >
+     <Link to={loggedin?"profile": "login"} >
 
       <IconButton>
          {loggedin? <FaceIcon />:<ExitToAppIcon/> }

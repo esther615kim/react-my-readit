@@ -13,7 +13,7 @@ const AuthContext = createContext();
 export const AuthProvider =({children})=>{
 
     const [usersInfo, setUsersInfo] = useState();
-    const [loggedin, setLoggedin] =useState(false);
+    const [loggedin, setLoggedin] =useState(true);
     const [loading,setLoading] = useState(true);
 
 
@@ -22,7 +22,6 @@ export const AuthProvider =({children})=>{
         const updatedInfo = await getAllUsers();
         setUsersInfo(updatedInfo);
         setLoading(false);
-        console.log("세팅",usersInfo);
         if(usersInfo) return usersInfo;
         // return updatedInfo;
     }
@@ -30,7 +29,7 @@ export const AuthProvider =({children})=>{
 
     return(
         <AuthContext.Provider
-        value={{usersInfo,loggedin,loading,getUsersInfo}}>
+        value={{usersInfo,loggedin,setLoggedin,loading,getUsersInfo}}>
             {children}
             </AuthContext.Provider>
     )
