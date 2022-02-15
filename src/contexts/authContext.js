@@ -12,24 +12,25 @@ const AuthContext = createContext();
 
 export const AuthProvider =({children})=>{
 
-    const [usersInfo, setUsersInfo] = useState();
-    const [loggedin, setLoggedin] =useState(true);
+    const [allusersInfo, setallUsersInfo] = useState();
+    const [username,setUsername]= useState(); //
+    const [loggedin, setLoggedin] =useState(false); //
     const [loading,setLoading] = useState(true);
 
 
 
     const getUsersInfo = async()=>{
         const updatedInfo = await getAllUsers();
-        setUsersInfo(updatedInfo);
+        setallUsersInfo(updatedInfo);
         setLoading(false);
-        if(usersInfo) return usersInfo;
+        if(allusersInfo) return allusersInfo;
         // return updatedInfo;
     }
 
 
     return(
         <AuthContext.Provider
-        value={{usersInfo,loggedin,setLoggedin,loading,getUsersInfo}}>
+        value={{allusersInfo,loggedin,setLoggedin,loading,getUsersInfo}}>
             {children}
             </AuthContext.Provider>
     )

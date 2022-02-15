@@ -13,62 +13,67 @@ import {
 } from "@mui/material";
 import { LinearProgress } from "@mui/material";
 import { Typography } from "@mui/material";
-import {useNavigate  } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-    let navigate = useNavigate();
-  const { usersInfo,setLoggedin,loading, getUsersInfo } =
+  let navigate = useNavigate();
+  const { allusersInfo, setLoggedin, loading, getUsersInfo } =
     useContext(AuthContext);
 
   useEffect(() => {
-    getUsersInfo()
+    getUsersInfo();
   }, [loading]);
 
   const handleClickDefaultUser = () => {
-
     // setLoggedin(true); // is it possible?
-    navigate('/');
-
+    navigate("/");
   };
 
   if (loading) return <LinearProgress color="inherit" />;
 
-  if (!loading && usersInfo)
+  if (!loading && allusersInfo)
     return (
       <StyledBox>
-        <Typography mt={2} variant="h6">
+        <Typography m={2} variant="h6">
           Welcome back
         </Typography>
-        <h3>{usersInfo[0].username}</h3>
-        <Divider variant="middle" />
-        <Avatar size="large" src={usersInfo[0].avatar_url} />
+        <Avatar
+          src={allusersInfo[0].avatar_url}
+          sx={{ width: 100, height: 100 }}
+        />
+        <h3>{allusersInfo[0].username}</h3>
+
         <Button
+          color="secondary"
+          variant="outlined"
           onClick={() => {
             handleClickDefaultUser();
           }}
         >
-          Login
+          login
         </Button>
+
+        <Divider variant="middle" />
 
         <Divider variant="middle" />
         <h6>or Login as</h6>
         <List>
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
-            <Avatar size="small" src={usersInfo[1].avatar_url} />
+            <Avatar size="small" src={allusersInfo[1].avatar_url} />
             <Typography ml={2} variant="subtitle2">
-              {usersInfo[1].username}
+              {allusersInfo[1].username}
             </Typography>
           </ListItem>
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
-            <Avatar size="small" src={usersInfo[2].avatar_url} />
+            <Avatar size="small" src={allusersInfo[2].avatar_url} />
             <Typography ml={2} variant="subtitle2">
-              {usersInfo[2].username}
+              {allusersInfo[2].username}
             </Typography>
           </ListItem>
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
-            <Avatar size="small" src={usersInfo[3].avatar_url} />
+            <Avatar size="small" src={allusersInfo[3].avatar_url} />
             <Typography ml={3} variant="subtitle2">
-              {usersInfo[3].username}
+              {allusersInfo[3].username}
             </Typography>
           </ListItem>
         </List>

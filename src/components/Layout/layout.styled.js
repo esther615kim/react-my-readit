@@ -7,10 +7,11 @@ padding:0.2rem;
 margin:1rem;
 div{
     position:fixed;
-    width:90%;
-    bottom:1rem;
+    width:96%;
+    bottom:2px;
+    left:0.5rem;
     background:#eee;
-    border-radius:1.6rem;
+    border-radius:0.6rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     z-index:9;
 }
