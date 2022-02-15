@@ -63,7 +63,6 @@ export const getSinglePost = (id)=>{
 export const getAllUsers = ()=>{
     return dataApi.get("/users")
     .then(({data})=>{ 
-        console.log("Fetched",data.users);
         return data.users;
     })
 }

@@ -6,7 +6,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { StyledBox } from './layout.styled';
 
 const BottomNav = () => {
-  const [value, setValue] = useState<number|unknown>(0);
+  const [value, setValue] = useState(0);
   return(
     <StyledBox>
     <BottomNavigation
