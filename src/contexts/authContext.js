@@ -12,25 +12,25 @@ const AuthContext = createContext();
 
 export const AuthProvider =({children})=>{
 
-    const [userInfo, setUserInfo] = useState([]);
+    const [usersInfo, setUsersInfo] = useState();
     const [loggedin, setLoggedin] =useState(false);
     const [loading,setLoading] = useState(true);
 
 
-    const checkUserInfo = async() =>{
-      const updatedInfo = await getAllUsers();
-      setUserInfo(updatedInfo);
-      setLoading(pre=>false);
-    } 
 
-    const getAllUsers = async()=>{
-        console.log("all all!")
+    const getUsersInfo = async()=>{
+        const updatedInfo = await getAllUsers();
+        setUsersInfo(updatedInfo);
+        setLoading(false);
+        console.log("세팅",usersInfo);
+        if(usersInfo) return usersInfo;
+        // return updatedInfo;
     }
 
 
     return(
         <AuthContext.Provider
-        value={{userInfo,loggedin,loading,getAllUsers}}>
+        value={{usersInfo,loggedin,loading,getUsersInfo}}>
             {children}
             </AuthContext.Provider>
     )
