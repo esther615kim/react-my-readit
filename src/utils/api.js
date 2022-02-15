@@ -63,7 +63,7 @@ export const getSinglePost = (id)=>{
 export const getAllUsers = ()=>{
     return dataApi.get("/users")
     .then(({data})=>{ 
-        console.log("all users",data.users);
+        console.log("Fetched",data.users);
         return data.users;
     })
 }
@@ -71,7 +71,7 @@ export const getAllUsers = ()=>{
 export const getByUsername = (username)=>{
     return dataApi.get(`users/${username}`)
     .then(({data})=>{
-        console.log(data.user);
-        return data.user;
+        console.log(data.users);
+        return data.users;
     })
 }

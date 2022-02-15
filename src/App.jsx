@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Layout from "./components/Layout";
 import BottomNav from "./components/Layout/BottomNav";
 import PostsPage from "./pages/PostsPage";
-import { lightTheme, darkTheme } from "./styles/darkTheme";
+// import { lightTheme, darkTheme } from "./styles/darkTheme";
 import { StyledApp } from "./styles/shared.styled";
 import CreatePage from './pages/CreatePage';
 import DetailPage from './pages/DetailPage';
@@ -12,14 +12,15 @@ import ProfilePage from './pages/ProfilePage';
 import Profile from './components/Layout/Profile';
 import { ArticleProvider } from './contexts/articleContext';
 import { AuthProvider } from "./contexts/authContext";
+import LoginPage from './pages/LoginPage';
 
-const App: React.FC = () => {
+const App =() => {
   // dark/light theme
   const [theme, setTheme] = useState("light");
 
   const themeToggler = () => {
     console.log("theme changed");
-    setTheme((prev: string): any =>
+    setTheme((prev) =>
       prev === "light" ? setTheme("dark") : setTheme("light")
     );
   };
@@ -36,6 +37,7 @@ const App: React.FC = () => {
           <Route path="/" element={< PostsPage/>} />
           <Route path="/create" element={<CreatePage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/posts/:id" element={<DetailPage />} />
         </Routes>
       <BottomNav/>

@@ -19,11 +19,11 @@ export const StyledDiv = styled.div`
         color:#212121;
 
     }
-    h4{
-        padding: 0 1rem;
+    .h4{
+        padding: 0 1.5rem;
         text-align:left;
         font-size:rem;
-        max-width:20rem;
+        max-width:19rem;
         margin-bottom:0;
         overflow: hidden;
         white-space: nowrap;
@@ -76,7 +76,7 @@ export const StyledDiv = styled.div`
 `
 
 export const StyledWrapper =styled.div`
-margin-left:2rem;
+margin-left:5rem;
 `
 
 export const StyledBox = styled(Box)`

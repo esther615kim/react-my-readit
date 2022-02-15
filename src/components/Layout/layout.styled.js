@@ -15,3 +15,19 @@ div{
     z-index:9;
 }
 `
+
+export const StyledDiv = styled.div`
+padding:0.4rem;
+a{
+    text-decoration:none;
+    color:#fff;
+}
+.title{
+    margin:0 0 0 0.4rem;
+    padding:0;
+}
+button{
+    color:#f26805
+}
+
+`

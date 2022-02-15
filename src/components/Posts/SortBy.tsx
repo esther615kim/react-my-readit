@@ -1,7 +1,8 @@
 import { StyledWrapper } from './posts.styled';
-import { Select } from '@mui/material';
+import { IconButton, Select } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import { useState } from 'react';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
 export default function SortBy() {
@@ -9,7 +10,10 @@ export default function SortBy() {
 
   return (
     <StyledWrapper>
-        <Select sx={{fontSize:12,height:30, width:60, borderRadius:30,background:"#efef"}} 
+      <IconButton>
+      <MoreVertIcon/>
+      </IconButton>
+        {/* <Select sx={{fontSize:12,height:30, width:60, borderRadius:30,background:"#efef"}} 
         value={sorting} 
         onChange={
             // (event:React.ChangeEvent<HTMLInputElement>):void => {
@@ -21,7 +25,7 @@ export default function SortBy() {
           <MenuItem value={10}>topic</MenuItem>
           <MenuItem value={20}>desc</MenuItem>
           <MenuItem value={30}>asc</MenuItem>
-        </Select>
+        </Select> */}
     </StyledWrapper>
   )
 }

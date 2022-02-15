@@ -1,14 +1,26 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import FaceIcon from '@mui/icons-material/Face';
 import { IconButton } from '@mui/material';
+import AuthContext from '../../contexts/authContext';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { Link } from 'react-router-dom';
+import { StyledDiv } from './layout.styled';
 
 const Profile = () => {
-  return <div style={{padding:"0.4rem",color:"#fff"}}>
-      <IconButton sx={{color:"#f26805"}}>
-          <FaceIcon />
+
+  const {loggedin} = useContext(AuthContext);
+
+  return <StyledDiv>
+     <Link to={"login"} >
+
+      <IconButton>
+         {loggedin? <FaceIcon />:<ExitToAppIcon/> }
       </IconButton>
-      <h4 style={{padding:0, margin:"0 0 0.2rem"}}>my readit</h4>
-  </div>;
+      <h4 className="title">
+        {loggedin? "my reddit":"login"}
+      </h4>
+      </Link>
+  </StyledDiv>;
 };
 
 export default Profile;

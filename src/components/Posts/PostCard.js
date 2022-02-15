@@ -34,7 +34,7 @@ const PostCard = ({ selected }) => {
             <Grid key={item.article_id} item xs={12} sm={5} ml={4}>
               <Paper className="post-box">
                 <Link to={`/posts/${item.article_id}`} state={{ from: item }}>
-                  <h4>{item.title}</h4>
+                  <Typography className="h4" variant="subtitle2">{item.title}</Typography>
                   <span>#{item.topic}</span>
                   <p>{item.body}</p>
                 </Link>
