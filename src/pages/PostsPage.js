@@ -1,13 +1,13 @@
-import { Stack, Chip } from "@mui/material";
+import { Stack, Chip, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getTopics } from '../utils/api';
-import PostCard from '../components/Posts/PostCard';
 import SortBy from '../components/Posts/SortBy';
 import { StyledDiv } from "../components/Posts/posts.styled";
+import Posts from './../components/Posts/index';
 
 
 
-const PostPage = () => {
+const PostsPage = () => {
 
   const [topics, setTopics] = useState([]);
   const [selected,setSelected] =useState("all");
@@ -50,10 +50,12 @@ const PostPage = () => {
       </Stack>
       </div>
       {/* POSTS */}
-     <PostCard selected={selected}/>
+     <Posts selected={selected}/>
     </StyledDiv>
+
+
   );
 };
 
-export default PostPage;
+export default PostsPage;
 

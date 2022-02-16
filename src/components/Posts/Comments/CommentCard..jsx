@@ -17,7 +17,7 @@ const CommentCard = ({comments,id}) => {
               <Avatar sx={{ width: 26, height: 26, marginRight: 1 }} />
               <div>
                 <h5>{item.author}</h5>
-                <h6>{item.created_at}</h6>
+                <h6>{item.created_at.substr(0,10)}</h6>
               </div>
               <Votes item={item}/>
             </div>

@@ -17,7 +17,6 @@ const SinglePost = ({ item }) => {
       <div className="author-box">
         <Avatar
           className="svg"
-          // src="/static/images/avatar/1.jpg"
           sx={{ bgcolor: lime[200], width: 50, height: 50 }}
         ></Avatar>
         <h5>{from.author}</h5>
@@ -31,7 +30,7 @@ const SinglePost = ({ item }) => {
             alignItems="center"
           >
             <Chip label={from.topic} variant="outlined" size="small" />
-            <Typography variant="button">{from.created_at}</Typography>
+            <Typography variant="button">{from.created_at.substr(0,10)}</Typography>
           </Stack>
 
           <p>{from.body}</p>

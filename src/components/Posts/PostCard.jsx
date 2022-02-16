@@ -1,39 +1,23 @@
-import { Paper, Stack, Button, Grid, Typography } from "@mui/material";
-import React, { useEffect, useContext, useState } from "react";
+import React,{useState} from "react";
+import { Paper, Stack, Button, Grid, Typography,Pagination } from "@mui/material";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
-import ArticleContext from "./../../contexts/articleContext";
-import { patchVotetoArticle } from "../../utils/api";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { StyledStack } from "./Comments/comments.styled";
 
-const PostCard = ({ selected }) => {
-  const { articles, loading, setFetchedData, filterByTopic } =
-    useContext(ArticleContext);
-  const [likedCount, setLikedCount] = useState();
-
-  useEffect(() => {
-    if (selected === "all") {
-      setFetchedData();
-    } else {
-      filterByTopic(selected);
-      console.log(selected, articles);
-    }
-
-  }, [selected, loading]);
-
-
-  if (loading) return <h3>loading...</h3>;
-
-  if (!loading)
-    return (
-      <Grid container justifyContent="center" alignItems="center">
-        {articles.map((item) => {
+const PostCard = ({articles}) => {
+    const [page, setPage] = useState(1);
+  return (
+    <>
+            {articles
+                   .slice((page - 1) * 10, (page - 1) * 10 + 10) // 10 per page
+            .map((item) => {
           return (
             <Grid key={item.article_id} item xs={12} sm={5} ml={4}>
               <Paper className="post-box">
-                <Link to={`/posts/${item.article_id}`} state={{ from: item }}>
+
+                <Link to={`/posts/${item.article_id}`} state={{ from: item }} style={{textDecoration:"none"}}>
                   <Typography className="h4" variant="subtitle2">{item.title}</Typography>
                   <span>#{item.topic}</span>
                   <p>{item.body}</p>
@@ -56,6 +40,7 @@ const PostCard = ({ selected }) => {
                     </StyledStack>
 
                     <Link
+                    sx={{textDecoration:"none"}} 
                       to={`/posts/${item.article_id}`}
                       state={{ from: item }}
                     >
@@ -68,8 +53,18 @@ const PostCard = ({ selected }) => {
             </Grid>
           );
         })}
-      </Grid>
-    );
-};
+
+<Pagination
+sx={{display:"flex",justifyContent:"center",pb:5}}
+count={5} page={page}
+onChange={(_,value)=>{
+  setPage(value);
+  window.scroll(0,150);
+}}
+/>
+        
+        </>
+  )
+}
 
 export default PostCard;
