@@ -11,6 +11,17 @@ export const getAllPosts = ()=>{
     })
 }
 
+export const getPostsbyUser = (user)=>{
+    return dataApi.get("/articles")
+    .then(({data})=>{ 
+        return data.articles;
+    }).then((res)=>{
+        const result = res.filter((item)=> item.author ===user);
+        console.log(user,"byUser",result);
+        return result;
+    })
+}
+
 export const getTopics = ()=>{
     return dataApi.get("/topics")
     .then(({data})=>{ 

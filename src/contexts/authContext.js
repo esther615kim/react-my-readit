@@ -1,13 +1,7 @@
-import {createContext, useReducer,useState} from 'react';
+import {createContext, useReducer} from 'react';
 import { getAllUsers} from './../utils/api';
 import authReducer from './authReducers';
 
-//logic 
-// input 받아서
-// check existing user
-// 있으면 => successfully login 없으면 not valid user!
-
-//
 const AuthContext = createContext();
 
 export const AuthProvider =({children})=>{
@@ -21,12 +15,6 @@ export const AuthProvider =({children})=>{
     }
 
     const [state,dispatch] = useReducer(authReducer,initialState)
-
-    // const [allusersInfo, setallUsersInfo] = useState();
-    // const [username,setUsername]= useState(); //
-    // const [loggedin, setLoggedin] =useState(false); //
-    // const [loading,setLoading] = useState(true);
-
 
 
     const getUsersInfo = async()=>{
@@ -54,6 +42,7 @@ export const AuthProvider =({children})=>{
             allUsers:state.allUsers,
             loading:state.loading,
             loggedin:state.loggedin,
+            username:state.username,
             getUsersInfo,
             setUserLogin
         }}>

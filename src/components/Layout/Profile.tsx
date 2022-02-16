@@ -8,7 +8,7 @@ import { StyledDiv } from './layout.styled';
 
 const Profile = () => {
 
-  const {loggedin,username} = useContext(AuthContext);
+  const {loggedin} = useContext(AuthContext);
   console.log("login:",loggedin)
 
   return <StyledDiv>
