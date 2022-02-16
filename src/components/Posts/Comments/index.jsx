@@ -3,6 +3,7 @@ import {
   Divider,
   OutlinedInput,
   FormControl,
+  Typography,
   Button,
   LinearProgress,
 } from "@mui/material";
@@ -12,6 +13,8 @@ import { getCommentsByPost } from '../../../utils/api';
 
 const Comments = ({ id }) => {
   const [comments, setComments] = useState(null);
+  const [newText,setNewText] = useState('');
+  const [message,setMessage] = useState('');
 
   useEffect(() => {
 
@@ -22,6 +25,23 @@ const Comments = ({ id }) => {
   }, [id]);
 
 
+  const handleTextChange = (e) =>{
+    // input validation
+    if(newText ===''){
+      setMessage(null)
+    }else if(newText!==''&& newText.trim().length<=10){
+      setMessage('Text must be at least 10 characters')
+    }else{
+      setMessage(null);
+    }
+    setNewText(e.target.value);
+  }
+
+  const handSubmitComment =(e)=>{
+    e.preventDefault();
+    console.log("SUBMIT");
+    setNewText(prev=> "");
+  }
   if (!comments)
     return (
       <StyledDiv>
@@ -36,16 +56,26 @@ const Comments = ({ id }) => {
         <Divider />
         <h4>{comments.length} comments</h4>
 
-        <FormControl sx={{ width: "100%" }}>
-          <OutlinedInput rows={3} multiline placeholder="Write your comment" />
+        <FormControl
+        sx={{ width: "100%" }}>
+          <OutlinedInput 
+          type="text"
+          rows={2}
+          onChange={handleTextChange}
+          multiline placeholder="Write your comment"
+          />
+          <Typography mt={1} className="message" variant="subtitle2">{message}</Typography>
           <Button
+          type="submit"
             className="submit"
             variant="contained"
             color="inherit"
             size="small"
+            onClick={handSubmitComment}
           >
             Submit
           </Button>
+
           {/* COMMENT LIST */}
         </FormControl>
         <CommentCard id={id} comments={comments}/>

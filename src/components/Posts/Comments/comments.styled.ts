@@ -8,7 +8,11 @@ text-align:left;
     margin:1rem 0;
 }
 h6{
-    font-weight:600;
+    font-weight:400;
+}
+.message{
+    text-align:center;
+    color:#d9541c;
 }
 .user-box{
 

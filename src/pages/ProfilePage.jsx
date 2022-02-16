@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const { loggedin, username } = useContext(AuthContext);
 
   const location = useLocation();
-  const { from } = location.state;
+  const { from } = location.state; // how can I make it optional?
 
   useEffect(() => {
     from

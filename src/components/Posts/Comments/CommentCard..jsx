@@ -7,7 +7,6 @@ import Votes from './Votes';
 
 const CommentCard = ({comments,id}) => {
 
-  console.log("article",id, "comments.length",comments.length)
   return (
 <>
     {comments.map((item) => {
