@@ -32,8 +32,6 @@ export const AuthProvider =({children})=>{
     const getUsersInfo = async()=>{
         const updatedInfo = await getAllUsers();
 
-        console.log("updated",updatedInfo);
-
         dispatch({
             type:"GET_USERS",
             payload:updatedInfo,
@@ -41,6 +39,7 @@ export const AuthProvider =({children})=>{
         })}
 
         const setUserLogin = (username)=>{
+            console.log("login",username);
     
             dispatch({
                 type:"SET_LOGIN",
@@ -49,14 +48,14 @@ export const AuthProvider =({children})=>{
             })}
 
 
-
-    
     return(
         <AuthContext.Provider
         value={{
             allUsers:state.allUsers,
             loading:state.loading,
-            getUsersInfo
+            loggedin:state.loggedin,
+            getUsersInfo,
+            setUserLogin
         }}>
             {children}
             </AuthContext.Provider>

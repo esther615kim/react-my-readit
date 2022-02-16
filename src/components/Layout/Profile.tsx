@@ -8,7 +8,8 @@ import { StyledDiv } from './layout.styled';
 
 const Profile = () => {
 
-  const {loggedin} = useContext(AuthContext);
+  const {loggedin,username} = useContext(AuthContext);
+  console.log("login:",loggedin)
 
   return <StyledDiv>
      <Link to={loggedin?"profile": "login"} >
@@ -17,7 +18,7 @@ const Profile = () => {
          {loggedin? <FaceIcon />:<ExitToAppIcon/> }
       </IconButton>
       <h4 className="title">
-        {loggedin? "my reddit":"login"}
+        {loggedin?"my-readit":"login"}
       </h4>
       </Link>
   </StyledDiv>;

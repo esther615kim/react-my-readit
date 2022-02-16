@@ -10,12 +10,12 @@ import { Typography } from '@mui/material';
 
 const Banner = () => {
 
-  const { allusersInfo, loading, getUsersInfo } =
+  const { allUsers, loading, getUsersInfo } =
   useContext(AuthContext);
 
   useEffect(() => {
     getUsersInfo();
-    console.log(allusersInfo);
+    console.log("now using reducer",allUsers);
   }, [loading]);
 
   const responsive =     {
@@ -27,7 +27,7 @@ const Banner = () => {
     }
   }
 
-  const items = allusersInfo?.map((user)=>{
+  const items = allUsers?.map((user)=>{
     return(
     <Link to={'/profile'}>
       <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
@@ -39,7 +39,7 @@ const Banner = () => {
   })
 
   if (loading) return <div>loading...</div>;
-  if (!loading && allusersInfo)
+  if (!loading && allUsers)
    return ( 
     <StyledDiv >
       <AliceCarousel
