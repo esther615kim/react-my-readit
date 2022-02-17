@@ -27,7 +27,7 @@ https://v5.reactrouter.com/web/api/Hooks/uselocation
 - `React`
 - hooks
 - context for global management
-- How to handle asynchronous functions
+- How to handle asynchronous functions in useEffect
 
 
 - `Others` (to-dos)
