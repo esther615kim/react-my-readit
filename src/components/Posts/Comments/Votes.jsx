@@ -6,9 +6,9 @@ import { patchVotestoComment } from "../../../utils/api";
 
 const Votes = ({ item }) => {
 
-  useEffect(() => {
-    setLikes(item.votes);
-  }, [likes]);
+  // useEffect(() => {
+  //   item && setLikes(item.votes);
+  // }, [likes]);
 
   const [likes, setLikes] = useState(0);
 

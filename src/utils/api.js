@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const dataApi = axios.create({
-    baseURL:"https://ek-reddit.herokuapp.com/api"
+    baseURL:"http://localhost:9090/api"
+    // baseURL:"https://ek-reddit.herokuapp.com/api"
 })
 
 export const getAllPosts = ()=>{
@@ -82,11 +83,20 @@ export const postComment = (article_id, author, body) => {
                         console.log(data.comment);
                         return(data.comment);
                     })
-
 }
 
-export const deleteComment =(comment_id) =>{
-    return dataApi.delete(`comments/${comment_id}`);
+export const deleteComment =(id) =>{
+    return dataApi.get("/comments")
+    .then(({data})=>{ 
+        if(data.comments.filter((item)=> item.comment_id !== parseInt(id))){
+            console.log("nothing to delete");
+            return;
+        }
+        return dataApi.delete(`comments/${id}`);
+    })
+
+
+
 }
 
 //users

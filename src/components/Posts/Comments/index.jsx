@@ -8,7 +8,7 @@ import {
   LinearProgress,
 } from "@mui/material";
 import { StyledDiv} from "./comments.styled";
-import { getCommentsByPost, patchVotestoComment } from '../../../utils/api';
+import { deleteComment, getCommentsByPost} from '../../../utils/api';
 import CommentCard from './CommentCard.';
 import CommentForm from './CommentForm';
 import { postComment } from './../../../utils/api';
@@ -31,9 +31,22 @@ const Comments = ({ id }) => {
 
     getCommentsByPost(id).then((updated) => {
       setComments(updated);
-    });
-    
+      comments && console.log(comments);
+    });  
   }
+
+
+  const deleteAComment =(id)=>{
+    deleteComment(id)
+    console.log("deleted");
+    // .then(()=>{
+    //   getCommentsByPost(id).then((updated) => {
+    //     setComments(updated);
+    //   });
+    // })
+       
+    }
+
 
   if (!comments)
     return (
@@ -49,7 +62,8 @@ const Comments = ({ id }) => {
         <Divider />
         <h4>{comments.length} comments</h4>
         <CommentForm addNewComment={addNewComment}/>
-        <CommentCard id={id} comments={comments} 
+        <CommentCard comments={comments}
+        deleteAComment ={deleteAComment}
         />
       </StyledDiv>
     );
