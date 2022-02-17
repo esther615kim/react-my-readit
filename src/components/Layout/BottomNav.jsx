@@ -1,9 +1,12 @@
 import React,{useState} from 'react';
-import {Box,BottomNavigation,BottomNavigationAction} from '@mui/material';
+
+import {BottomNavigation,BottomNavigationAction} from '@mui/material';
+import { StyledBox } from './layout.styled';
+import { Link } from 'react-router-dom';
+
 import HomeIcon from '@mui/icons-material/Home';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import { StyledBox } from './layout.styled';
+import PersonIcon from '@mui/icons-material/Person';
 
 const BottomNav = () => {
   const [value, setValue] = useState(0);
@@ -16,9 +19,13 @@ const BottomNav = () => {
         setValue(newValue);
       }}
     >
+      <Link to={'/'}>
       <BottomNavigationAction  icon={<HomeIcon />} />
+      </Link>
       <BottomNavigationAction icon={<AddCircleOutlineIcon />} />
-      <BottomNavigationAction icon={<NotificationsActiveIcon />} />
+      <Link to={'/profile'}>
+      <BottomNavigationAction icon={<PersonIcon/>} />
+      </Link>
     </BottomNavigation>
   </StyledBox>
   )
