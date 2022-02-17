@@ -1,6 +1,11 @@
  
- ###backend repo
+### backend repo
 -  https://github.com/esther615kim/nodejs-jest-my-readit
+
+### hosted backend project 
+- https://dashboard.heroku.com/apps/ek-reddit/api
+
+## How to run
 
 
 
