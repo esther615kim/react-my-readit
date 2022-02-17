@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from "react";
+import React, {  useState, useEffect,useContext} from "react";
 import {
   Divider,
   OutlinedInput,
@@ -8,40 +8,36 @@ import {
   LinearProgress,
 } from "@mui/material";
 import { StyledDiv} from "./comments.styled";
-import CommentCard from './CommentCard.';
 import { getCommentsByPost } from '../../../utils/api';
+import CommentCard from './CommentCard.';
+import CommentForm from './CommentForm';
+import { postComment } from './../../../utils/api';
+import AuthContext from '../../../contexts/authContext';
 
 const Comments = ({ id }) => {
   const [comments, setComments] = useState(null);
-  const [newText,setNewText] = useState('');
-  const [message,setMessage] = useState('');
+  const { username } = useContext(AuthContext);
 
   useEffect(() => {
 
     getCommentsByPost(id).then((updated) => {
       setComments(updated);
+      console.log(comments);
     });
 
   }, [id]);
 
+  const addNewComment =(newComment)=>{
+    postComment(id,username,newComment);
 
-  const handleTextChange = (e) =>{
-    // input validation
-    if(newText ===''){
-      setMessage(null)
-    }else if(newText!==''&& newText.trim().length<=10){
-      setMessage('Text must be at least 10 characters')
-    }else{
-      setMessage(null);
-    }
-    setNewText(e.target.value);
+    getCommentsByPost(id).then((updated) => {
+      setComments(updated);
+      console.log(comments);
+    });
+    
+    // setComments([newComment,...comments]);
   }
 
-  const handSubmitComment =(e)=>{
-    e.preventDefault();
-    console.log("SUBMIT");
-    setNewText(prev=> "");
-  }
   if (!comments)
     return (
       <StyledDiv>
@@ -55,29 +51,7 @@ const Comments = ({ id }) => {
       <StyledDiv>
         <Divider />
         <h4>{comments.length} comments</h4>
-
-        <FormControl
-        sx={{ width: "100%" }}>
-          <OutlinedInput 
-          type="text"
-          rows={2}
-          onChange={handleTextChange}
-          multiline placeholder="Write your comment"
-          />
-          <Typography mt={1} className="message" variant="subtitle2">{message}</Typography>
-          <Button
-          type="submit"
-            className="submit"
-            variant="contained"
-            color="inherit"
-            size="small"
-            onClick={handSubmitComment}
-          >
-            Submit
-          </Button>
-
-          {/* COMMENT LIST */}
-        </FormControl>
+        <CommentForm addNewComment={addNewComment}/>
         <CommentCard id={id} comments={comments}/>
       </StyledDiv>
     );

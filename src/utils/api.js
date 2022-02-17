@@ -45,6 +45,16 @@ export const getPostsByTopic = (topic)=>{
     })
 }
 
+// 503
+export const getSinglePost = (id)=>{
+    return dataApi.get(`articles/${id}`)
+    .then(({data})=>{
+        console.log(data.article);
+        return data.article;
+    })
+}
+
+// comments 
 export const getCommentsByPost = (id)=>{
     return dataApi.get("/comments")
     .then(({data})=>{ 
@@ -54,19 +64,25 @@ export const getCommentsByPost = (id)=>{
 
 export const patchVotestoComment =(comment_id,vote)=>{
     console.log(comment_id,vote);
+
     return dataApi.patch(`/comments/${comment_id}`,{"votes":vote})
     .then(({data})=> {
         console.log(data.article.votes);
         return data.article.votes;
     })
 }
-// 503
-export const getSinglePost = (id)=>{
-    return dataApi.get(`articles/${id}`)
-    .then(({data})=>{
-        console.log(data.article);
-        return data.article;
-    })
+
+export const postComment = (article_id, author, body) => {
+
+    const commentObj = { author, body };
+    console.log("sending",commentObj);
+
+    return dataApi.post(`/articles/${article_id}/comments`, commentObj)
+                    .then(({data}) => {
+                        console.log(data.comment);
+                        return(data.comment);
+                    })
+
 }
 
 //users
