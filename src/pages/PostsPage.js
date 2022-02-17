@@ -17,7 +17,7 @@ const PostsPage = () => {
       .then((res) => {
         setTopics(res);
       })
-  }, [topics,selected]);
+  }, [selected]);
 
     const handleCategoryClick=(e)=>{
         e.preventDefault();
