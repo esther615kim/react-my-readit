@@ -22,7 +22,6 @@ const Comments = ({ id }) => {
 
     getCommentsByPost(id).then((updated) => {
       setComments(updated);
-      console.log(comments);
     });
 
   }, [id]);
@@ -32,10 +31,8 @@ const Comments = ({ id }) => {
 
     getCommentsByPost(id).then((updated) => {
       setComments(updated);
-      console.log(comments);
     });
     
-    // setComments([newComment,...comments]);
   }
 
   if (!comments)

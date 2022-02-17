@@ -5,6 +5,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { Chip } from "@mui/material/";
 import { lime } from "@mui/material/colors";
 import Comments from './Comments/index';
+import { Link } from 'react-router-dom';
 
 const SinglePost = ({ item }) => {
   const { id } = useParams();
@@ -14,6 +15,7 @@ const SinglePost = ({ item }) => {
   console.log(id, item);
   return (
     <StyledBox>
+      <Link to={'/user'} state={{from:from.author}}>
       <div className="author-box">
         <Avatar
           className="svg"
@@ -21,6 +23,7 @@ const SinglePost = ({ item }) => {
         ></Avatar>
         <h5>{from.author}</h5>
       </div>
+      </Link>
       <Paper sx={{ minHeight: "80vh", p: 3 }}>
         <Container>
           <h3>{from.title}</h3>

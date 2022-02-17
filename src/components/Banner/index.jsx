@@ -29,7 +29,7 @@ const Banner = () => {
 
   const items = allUsers?.map((user)=>{
     return(
-    <Link to={'/profile'} state={{ from: user.username }} >
+    <Link to={'/user'} state={{ from: user.username }} >
       <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
      <Avatar sx={{my:1,width:40,height:40,mx:30}}src={user.avatar_url}/>
        <Typography variant="caption">{user.username}</Typography>

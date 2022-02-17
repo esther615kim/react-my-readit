@@ -4,6 +4,7 @@ import {
   Box
 } from "@mui/material";
 import Votes from './Votes';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const CommentCard = ({comments,id}) => {
 
@@ -20,7 +21,9 @@ const CommentCard = ({comments,id}) => {
               </div>
               <Votes item={item}/>
             </div>
-            <p>{item.body}</p>
+            <p>{item.body}
+            <DeleteOutlineIcon className="delete"/></p>
+
             <Divider />
           </Box>
         );

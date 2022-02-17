@@ -13,6 +13,7 @@ import Profile from './components/Layout/Profile';
 import { ArticleProvider } from './contexts/articleContext';
 import { AuthProvider } from "./contexts/authContext";
 import LoginPage from './pages/LoginPage';
+import UserPage from './pages/UserPage';
 
 const App =() => {
   // dark/light theme
@@ -38,6 +39,7 @@ const App =() => {
           <Route path="/create" element={<CreatePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/user" element={<UserPage />} />
           <Route path="/posts/:id" element={<DetailPage />} />
         </Routes>
       <BottomNav/>

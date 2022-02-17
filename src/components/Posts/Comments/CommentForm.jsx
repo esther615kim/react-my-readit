@@ -27,9 +27,12 @@ const CommentForm = ({ addNewComment }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newComment = newText;
-    addNewComment(newComment);
-    setNewText("");
+    if(newText.trim().length > 10){
+        const newComment = newText;
+        addNewComment(newComment);
+        setNewText("");
+    }
+
   };
 
   return (
