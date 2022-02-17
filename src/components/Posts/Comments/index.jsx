@@ -1,4 +1,4 @@
-import React, {  useState, useEffect,useContext} from "react";
+import React, {  useState, useEffect,useContext,useCallback} from "react";
 import {
   Divider,
   OutlinedInput,
@@ -8,7 +8,7 @@ import {
   LinearProgress,
 } from "@mui/material";
 import { StyledDiv} from "./comments.styled";
-import { getCommentsByPost } from '../../../utils/api';
+import { getCommentsByPost, patchVotestoComment } from '../../../utils/api';
 import CommentCard from './CommentCard.';
 import CommentForm from './CommentForm';
 import { postComment } from './../../../utils/api';
@@ -49,7 +49,8 @@ const Comments = ({ id }) => {
         <Divider />
         <h4>{comments.length} comments</h4>
         <CommentForm addNewComment={addNewComment}/>
-        <CommentCard id={id} comments={comments}/>
+        <CommentCard id={id} comments={comments} 
+        />
       </StyledDiv>
     );
 };

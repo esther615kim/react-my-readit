@@ -29,8 +29,8 @@ h6{
 p{
 min-height:2rem;
 text-indent:0;
-padding:0.4rem;
-margin:0.4rem;
+padding-bottom:0.4rem;
+margin:0.2rem;
 position:relative;
 }
 .delete {

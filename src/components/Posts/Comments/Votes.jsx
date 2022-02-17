@@ -5,6 +5,11 @@ import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { patchVotestoComment } from "../../../utils/api";
 
 const Votes = ({ item }) => {
+
+  useEffect(() => {
+    setLikes(item.votes);
+  }, [likes]);
+
   const [likes, setLikes] = useState(0);
 
   const handleIncVote = useCallback((e) => {
@@ -25,11 +30,6 @@ const Votes = ({ item }) => {
       setLikes((prev) => prev + 1);
     });
   };
-
-  useEffect(() => {
-    setLikes(item.votes);
-  }, [likes]);
-
 
 
   return (

@@ -85,6 +85,10 @@ export const postComment = (article_id, author, body) => {
 
 }
 
+export const deleteComment =(comment_id) =>{
+    return dataApi.delete(`comments/${comment_id}`);
+}
+
 //users
 export const getAllUsers = ()=>{
     return dataApi.get("/users")
