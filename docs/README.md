@@ -1,6 +1,11 @@
  
- ###backend repo
+### backend repo
 -  https://github.com/esther615kim/nodejs-jest-my-readit
+
+### hosted backend project 
+- https://dashboard.heroku.com/apps/ek-reddit/api
+
+## How to run
 
 
 
@@ -22,7 +27,7 @@ https://v5.reactrouter.com/web/api/Hooks/uselocation
 - `React`
 - hooks
 - context for global management
-- How to handle asynchronous functions
+- How to handle asynchronous functions in useEffect
 
 
 - `Others` (to-dos)
