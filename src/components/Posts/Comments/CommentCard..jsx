@@ -1,10 +1,14 @@
+import React, { useContext } from "react";
+
 import { Divider, Avatar, Box, Stack } from "@mui/material";
 import LikeButton from "../LikeButton";
 import { StyledLikedButton } from "../posts.styled";
-
 import DeleteButton from "./DeleteButton";
+import AuthContext from "../../../contexts/authContext";
 
 const CommentCard = ({ comments, deleteAComment }) => {
+  const { username, loggedin } = useContext(AuthContext);
+
   return (
     <>
       {comments.map((item) => {
@@ -17,17 +21,18 @@ const CommentCard = ({ comments, deleteAComment }) => {
                 <h6>{item.created_at.substr(0, 10)}</h6>
               </div>
               {/* <Votes item={item} /> */}
-              <Stack  className="buttons">
-              <StyledLikedButton>
-                <LikeButton item={item}/>
-                 {item.votes}
-                  </StyledLikedButton>
-
-                <DeleteButton
-                  id={item?.comment_id}
-                  deleteAComment={deleteAComment}
-                />
-                </Stack>
+              <Stack className="buttons">
+                <StyledLikedButton>
+                  <LikeButton item={item} />
+                  {item.votes}
+                </StyledLikedButton>
+                {loggedin && item.author ===username && (
+                  <DeleteButton
+                    id={item?.comment_id}
+                    deleteAComment={deleteAComment}
+                  />
+                )}
+              </Stack>
             </div>
             <p>{item.body}</p>
             <Divider />

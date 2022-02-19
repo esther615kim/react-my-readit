@@ -10,7 +10,7 @@ import CommentContext from '../../contexts/commentContext'
 
 const LikeButton = (item ) => {
   const {updateVotes} = useContext(ArticleContext);
-  const {updateCommentVotes} = useContext(CommentContext);
+  // const {updateCommentVotes} = useContext(CommentContext);
 
   const [isLiked, setIsLiked] = useState(false);
 
@@ -24,7 +24,7 @@ const LikeButton = (item ) => {
     // case 2 comment
     if(typeof(item.item)==="object"){
       console.log("comment_id",item.item.comment_id);
-      (!isLiked)? updateCommentVotes(item.item,1): updateCommentVotes(item.item,-1);
+      // (!isLiked)? updateCommentVotes(item.item,1): updateCommentVotes(item.item,-1);
       setIsLiked(prev=> !prev);
 
     }
