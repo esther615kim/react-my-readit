@@ -1,4 +1,4 @@
-import React, {  useState, useEffect,useContext,useCallback} from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import {
   Divider,
   OutlinedInput,
@@ -7,47 +7,40 @@ import {
   Button,
   LinearProgress,
 } from "@mui/material";
-import { StyledDiv} from "./comments.styled";
-import { deleteComment, getCommentsByPost} from '../../../utils/api';
-import CommentCard from './CommentCard.';
-import CommentForm from './CommentForm';
-import { postComment } from './../../../utils/api';
-import AuthContext from '../../../contexts/authContext';
+import { StyledDiv } from "./comments.styled";
+import { deleteComment, getCommentsByPost } from "../../../utils/api";
+import CommentCard from "./CommentCard.";
+import CommentForm from "./CommentForm";
+import { postComment } from "./../../../utils/api";
+import AuthContext from "../../../contexts/authContext";
+import CommentContext from "../../../contexts/commentContext";
 
 const Comments = ({ id }) => {
-  const [comments, setComments] = useState(null);
+  const { articleComments, updateCommentsByArticle, loading } =
+    useContext(CommentContext);
   const { username } = useContext(AuthContext);
 
   useEffect(() => {
+    updateCommentsByArticle(id);
+  }, [id, loading]);
 
-    getCommentsByPost(id).then((updated) => {
-      setComments(updated);
-    });
+  const addNewComment = async (newComment) => {
+    const res = await postComment(id, username, newComment);
+    const Nextres = await updateCommentsByArticle(id);
+    return Nextres;
+  };
 
-  }, [id]);
-
-  const addNewComment =(newComment)=>{
-    postComment(id,username,newComment);
-
-    getCommentsByPost(id).then((updated) => {
-      setComments(updated);
-      comments && console.log(comments);
-    });  
-  }
-
-
-  const deleteAComment =(comment_id)=>{
-    deleteComment(comment_id)
-    .then(()=>{
+  const deleteAComment = (comment_id) => {
+    deleteComment(comment_id).then(() => {
       getCommentsByPost(id).then((updated) => {
-        setComments(updated);
+        updateCommentsByArticle(id);
       });
-    })
-       
-    }
+    });
+  };
 
+  console.log(articleComments);
 
-  if (!comments)
+  if (loading)
     return (
       <StyledDiv>
         <Divider />
@@ -55,14 +48,15 @@ const Comments = ({ id }) => {
       </StyledDiv>
     );
 
-  if (comments.length)
+  if (!loading)
     return (
       <StyledDiv>
         <Divider />
-        <h4>{comments.length} comments</h4>
-        <CommentForm addNewComment={addNewComment}/>
-        <CommentCard comments={comments}
-        deleteAComment ={deleteAComment}
+        <h4>{articleComments.length} comments</h4>
+        <CommentForm addNewComment={addNewComment} />
+        <CommentCard
+          comments={articleComments}
+          deleteAComment={deleteAComment}
         />
       </StyledDiv>
     );
