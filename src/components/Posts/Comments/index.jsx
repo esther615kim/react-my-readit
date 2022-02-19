@@ -36,14 +36,13 @@ const Comments = ({ id }) => {
   }
 
 
-  const deleteAComment =(id)=>{
-    deleteComment(id)
-    console.log("deleted");
-    // .then(()=>{
-    //   getCommentsByPost(id).then((updated) => {
-    //     setComments(updated);
-    //   });
-    // })
+  const deleteAComment =(comment_id)=>{
+    deleteComment(comment_id)
+    .then(()=>{
+      getCommentsByPost(id).then((updated) => {
+        setComments(updated);
+      });
+    })
        
     }
 

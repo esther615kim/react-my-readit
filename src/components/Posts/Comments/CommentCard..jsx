@@ -3,7 +3,7 @@ import Votes from "./Votes";
 
 import DeleteButton from "./DeleteButton";
 
-const CommentCard = ({ comments, deleteComment }) => {
+const CommentCard = ({ comments, deleteAComment }) => {
   return (
     <>
       {comments.map((item) => {
@@ -21,7 +21,7 @@ const CommentCard = ({ comments, deleteComment }) => {
               {item.body}
               <DeleteButton 
               id={item?.comment_id}
-              deleteComment={deleteComment} />
+              deleteAComment={deleteAComment} />
             </p>
             <Divider />
           </Box>

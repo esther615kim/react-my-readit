@@ -88,11 +88,15 @@ export const postComment = (article_id, author, body) => {
 export const deleteComment =(id) =>{
     return dataApi.get("/comments")
     .then(({data})=>{ 
-        if(data.comments.filter((item)=> item.comment_id !== parseInt(id))){
-            console.log("nothing to delete");
+
+        console.log("to delete", data.comments.filter((item)=> item.comment_id == parseInt(id)));
+
+        if(data.comments.filter((item)=> item.comment_id === parseInt(id))){
+            return dataApi.delete(`comments/${id}`);
+        }else{
+            console.log("nothing to delete")
             return;
         }
-        return dataApi.delete(`comments/${id}`);
     })
 
 
