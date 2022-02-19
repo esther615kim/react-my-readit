@@ -20,7 +20,7 @@ const CommentCard = ({ comments, deleteAComment }) => {
                 <h5>{item.author}</h5>
                 <h6>{item.created_at.substr(0, 10)}</h6>
               </div>
-              {/* <Votes item={item} /> */}
+              {/* DELETE & LIKE BUTTONS */}
               <Stack className="buttons">
                 <StyledLikedButton>
                   <LikeButton item={item} />

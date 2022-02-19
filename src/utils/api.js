@@ -87,8 +87,6 @@ export const getCommentsByPost = (id)=>{
 }
 
 export const patchVotestoComment =(comment_id,number=1)=>{
-    console.log(comment_id,number);
-
     return dataApi.patch(`/comments/${comment_id}`,{"votes":number})
     .then((res)=>console.log(res))
     .catch((err)=>console.log(err));

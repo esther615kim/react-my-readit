@@ -6,27 +6,27 @@ import { getAllComments,patchVotestoComment, dataApi } from './../utils/api';
 
 const CommentContext = createContext();
 
-export const ArticleProvider =({children})=>{
+export const CommentProvider =({children})=>{
 
     const [comments,setComments] = useState([]);
     const [loading,setLoading] = useState(true);
 
-
     const setFetchedComments= async() =>{ // ALL comments
 
+    // get all comments
     const updatedComments = await getAllComments();
-
     setComments(updatedComments);
     console.log("updated comments", comments);
     setLoading(pre=>false);
     } 
 
+    // update votes
     const updateCommentVotes = async(id,vote) =>{ // comment_id
         console.log("comment_id",id)
         const res = await patchVotestoComment(id,vote);
-  
-        const updatedArticles = await setFetchedComments(); // ALL comments
-        return updatedArticles;
+
+        const updatedComments = await setFetchedComments(); // ALL comments
+        return updatedComments;
       }
 
     return(

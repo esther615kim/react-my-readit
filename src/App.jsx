@@ -6,16 +6,17 @@ import BottomNav from "./components/Layout/BottomNav";
 import PostsPage from "./pages/PostsPage";
 // import { lightTheme, darkTheme } from "./styles/darkTheme";
 import { StyledApp } from "./styles/shared.styled";
-import CreatePage from './pages/CreatePage';
-import DetailPage from './pages/DetailPage';
-import ProfilePage from './pages/ProfilePage';
-import Profile from './components/Layout/Profile';
-import { ArticleProvider } from './contexts/articleContext';
+import CreatePage from "./pages/CreatePage";
+import DetailPage from "./pages/DetailPage";
+import ProfilePage from "./pages/ProfilePage";
+import Profile from "./components/Layout/Profile";
+import { ArticleProvider } from "./contexts/articleContext";
 import { AuthProvider } from "./contexts/authContext";
-import LoginPage from './pages/LoginPage';
-import UserPage from './pages/UserPage';
+import { CommentProvider } from "./contexts/commentContext";
+import LoginPage from "./pages/LoginPage";
+import UserPage from "./pages/UserPage";
 
-const App =() => {
+const App = () => {
   // dark/light theme
   const [theme, setTheme] = useState("light");
 
@@ -29,23 +30,25 @@ const App =() => {
   return (
     // <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}> </ThemeProvider>
     <AuthProvider>
-    <ArticleProvider>
-    <BrowserRouter>
-    <StyledApp>
-      <Profile />
-      <Layout />
-      <Routes>
-          <Route path="/" element={< PostsPage/>} />
-          <Route path="/create" element={<CreatePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/posts/:id" element={<DetailPage />} />
-        </Routes>
-      <BottomNav/>
-    </StyledApp>
-    </BrowserRouter>
-    </ArticleProvider>
+      <ArticleProvider>
+        <CommentProvider>
+          <BrowserRouter>
+            <StyledApp>
+              <Profile />
+              <Layout />
+              <Routes>
+                <Route path="/" element={<PostsPage />} />
+                <Route path="/create" element={<CreatePage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/user" element={<UserPage />} />
+                <Route path="/posts/:id" element={<DetailPage />} />
+              </Routes>
+              <BottomNav />
+            </StyledApp>
+          </BrowserRouter>
+        </CommentProvider>
+      </ArticleProvider>
     </AuthProvider>
   );
 };
