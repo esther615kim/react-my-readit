@@ -7,6 +7,11 @@
 
 ### How to run
 
+- To run the app, clone the repo and run it with `npm install`.
+
+- Run `npm run start` to start the app.
+
+- minimum versions of `Node.js`: Node.js `v17.1.0`
 
 
 ### What I've practiced and learned from the project

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const dataApi = axios.create({
-    baseURL:"http://localhost:9090/api"
+    baseURL:"http://localhost:8080/api"
     // baseURL:"https://ek-reddit.herokuapp.com/api"
 })
 
@@ -34,7 +34,7 @@ export const getPostsbyUser = (user)=>{
 }
 
 //404
-export const patchVotetoArticle = (article_id,number) =>{
+export const patchVotetoArticle = (article_id,number=1) =>{
     console.log(article_id,number);
     return dataApi.patch(`/articles/${article_id}`,{"votes":number})
     .then((res)=>console.log(res))

@@ -1,12 +1,11 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import ArticleContext from "../../contexts/articleContext";
 import PostCard from './PostCard';
 import {Grid} from "@mui/material";
 
 const Posts = ({ selected }) => {
-  const { articles, loading, setFetchedData, filterByTopic } =
+  const { articles, loading, setFetchedData, filterByTopic} =
   useContext(ArticleContext);
-  const [likedCount, setLikedCount] = useState();
 
 
   useEffect(() => {
@@ -27,7 +26,6 @@ const Posts = ({ selected }) => {
       <Grid container justifyContent="center" alignItems="center">
         <PostCard articles={articles}/>
         
-  
       </Grid>
     );
 };

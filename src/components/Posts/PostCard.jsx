@@ -12,14 +12,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { StyledStack } from "./Comments/comments.styled";
+import LikeButton from "./LikeButton";
+import { StyledLikedButton } from './posts.styled';
 
-const PostCard = ({ articles }) => {
-
-  
-
-
-
+const PostCard = ({articles}) => {
   const [page, setPage] = useState(1);
+
   return (
     <>
       {articles
@@ -40,27 +38,11 @@ const PostCard = ({ articles }) => {
                   <p>{item.body}</p>
                 </Link>
 
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    fontSize: "0.6rem",
-                  }}
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
                 >
-                  <StyledStack direction="row" alignItems="center">
-                    <ArrowUpward
-                      className="arrow"
-                      color="warning"
-                      size="small"
-                    />
-                    <span style={{ fontSize: 12 }}>{item.votes}</span>
-                    <ArrowDownward
-                      className="arrow"
-                      color="primary"
-                      size="small"
-                    />
-                  </StyledStack>
-
                   <Link
                     sx={{ textDecoration: "none" }}
                     to={`/posts/${item.article_id}`}
@@ -70,7 +52,11 @@ const PostCard = ({ articles }) => {
                       {item.comment_count} comments
                     </Button>
                   </Link>
-                </div>
+
+                  <StyledLikedButton>
+                    <LikeButton item={item.article_id}/>{item.votes}
+                  </StyledLikedButton>
+                </Stack>
               </Paper>
             </Grid>
           );

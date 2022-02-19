@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box } from '@mui/material';
+import { Box,Button } from '@mui/material';
 
 export const StyledDiv = styled.div`
 
@@ -73,6 +73,15 @@ export const StyledDiv = styled.div`
     .liked{
         color:#f26805;
     }
+`
+export const StyledLikedButton = styled(Button)`
+font-size: 0.8rem;
+border:1px solid #eee;
+svg{
+    font-size:1rem;
+    padding-right:0.2rem;
+    color:#e67ca5;
+}
 `
 
 export const StyledWrapper =styled.div`

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {createContext} from 'react';
-import { getAllPosts, getPostsByTopic, deletePost } from './../utils/api';
+import { getAllPosts, getPostsByTopic, deletePost, patchVotetoArticle } from './../utils/api';
 
 
 const ArticleContext = createContext();
@@ -31,10 +31,17 @@ export const ArticleProvider =({children})=>{
       return updatedArticles;
     }
 
+    const updateVotes = async(id,vote) =>{
+      console.log("id",id)
+      const res = await patchVotetoArticle(id,vote);
+
+      const updatedArticles = await setFetchedData();
+      return updatedArticles;
+    }
 
     return(
         <ArticleContext.Provider 
-        value={{articles,loading,setFetchedData,filterByTopic,deleteAPost}}>
+        value={{articles,loading,setFetchedData,filterByTopic,deleteAPost,updateVotes}}>
             {children}
         </ArticleContext.Provider>
     )
