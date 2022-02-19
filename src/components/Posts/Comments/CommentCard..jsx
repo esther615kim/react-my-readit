@@ -23,7 +23,8 @@ const CommentCard = ({ comments, deleteAComment }) => {
               {/* DELETE & LIKE BUTTONS */}
               <Stack className="buttons">
                 <StyledLikedButton>
-                  <LikeButton item={item} />
+                  <LikeButton 
+                  item={item} />
                   {item.votes}
                 </StyledLikedButton>
                 {loggedin && item.author ===username && (

@@ -26,15 +26,14 @@ export const CommentProvider =({children})=>{
         getCommentsByPost(id).then((updated) => {
             setArticleComments(updated);
             setLoading(pre=>false);
+            console.log()
     })
 }
-
     // update votes
-    const updateCommentVotes = async(id,vote) =>{ // comment_id
+    const updateCommentVotes = async(article_id,id,vote) =>{ // comment_id
         console.log("comment_id",id)
         const res = await patchVotestoComment(id,vote);
-
-        const updatedComments = await setFetchedComments(); // ALL comments
+        const updatedComments = await updateCommentsByArticle(article_id); 
         return updatedComments;
       }
 

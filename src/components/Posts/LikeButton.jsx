@@ -6,11 +6,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useContext } from 'react';
 import ArticleContext from '../../contexts/articleContext';
-import CommentContext from '../../contexts/commentContext'
+import CommentContext from '../../contexts/commentContext';
 
-const LikeButton = (item ) => {
+
+const LikeButton = (item) => {
   const {updateVotes} = useContext(ArticleContext);
-  const {updateCommentVotes} =useContext(CommentContext);
+  const {updateCommentVotes} =  useContext(CommentContext);
 
   const [isLiked, setIsLiked] = useState(false);
 
@@ -23,10 +24,9 @@ const LikeButton = (item ) => {
     }
     // case 2 comment
     if(typeof(item.item)==="object"){
-      console.log("comment_id",item.item.comment_id);
-      console.log(updateCommentVotes);
-      (!isLiked)? updateCommentVotes(item.item.comment_id,1)
-      : updateCommentVotes(item.item.comment_id,-1)
+      
+      (!isLiked)? updateCommentVotes(item.item.article_id, item.item.comment_id,1)
+      : updateCommentVotes(item.item.article_id,item.item.comment_id,-1)
 
       setIsLiked(prev=> !prev);
     }

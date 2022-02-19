@@ -16,12 +16,13 @@ import AuthContext from "../../../contexts/authContext";
 import CommentContext from "../../../contexts/commentContext";
 
 const Comments = ({ id }) => {
-  const { articleComments, updateCommentsByArticle, loading } =
+  const { articleComments, updateCommentsByArticle,updateCommentVotes, loading } =
     useContext(CommentContext);
   const { username } = useContext(AuthContext);
 
   useEffect(() => {
     updateCommentsByArticle(id);
+    console.log(articleComments);
   }, [id, loading]);
 
   const addNewComment = async (newComment) => {
@@ -55,6 +56,7 @@ const Comments = ({ id }) => {
         <h4>{articleComments.length} comments</h4>
         <CommentForm addNewComment={addNewComment} />
         <CommentCard
+        updateCommentVotes={updateCommentVotes}
           comments={articleComments}
           deleteAComment={deleteAComment}
         />
