@@ -19,9 +19,10 @@ const CommentCard = ({ comments, deleteAComment }) => {
               {/* <Votes item={item} /> */}
               <Stack  className="buttons">
               <StyledLikedButton>
-                <LikeButton/>
+                <LikeButton item={item}/>
                  {item.votes}
                   </StyledLikedButton>
+
                 <DeleteButton
                   id={item?.comment_id}
                   deleteAComment={deleteAComment}

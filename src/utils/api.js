@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const dataApi = axios.create({
+export const dataApi = axios.create({
     baseURL:"http://localhost:8080/api"
     // baseURL:"https://ek-reddit.herokuapp.com/api"
 })
@@ -70,10 +70,15 @@ export const deletePost = (id)=>{
             return;
         }
     }).catch((err)=>console.log(err));
-
 }
 
 // comments 
+export const getAllComments = ()=>{
+    return dataApi.get("/comments")
+    .then(({data})=>{ 
+        return data.comments;
+    })
+}
 export const getCommentsByPost = (id)=>{
     return dataApi.get("/comments")
     .then(({data})=>{ 
@@ -81,14 +86,12 @@ export const getCommentsByPost = (id)=>{
     })
 }
 
-export const patchVotestoComment =(comment_id,vote)=>{
-    console.log(comment_id,vote);
+export const patchVotestoComment =(comment_id,number=1)=>{
+    console.log(comment_id,number);
 
-    return dataApi.patch(`/comments/${comment_id}`,{"votes":vote})
-    .then(({data})=> {
-        console.log(data.article.votes);
-        return data.article.votes;
-    })
+    return dataApi.patch(`/comments/${comment_id}`,{"votes":number})
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err));
 }
 
 export const postComment = (article_id, author, body) => {

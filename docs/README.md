@@ -41,7 +41,15 @@ https://v5.reactrouter.com/web/api/Hooks/uselocation
 
   `React`
 - context and useReducer for global management
-- How to handle asynchronous functions in useEffect
+- `authContext.js`
+- `authReducer.js`
 
-  `Others` (to-dos)
+- reusable components
+- `LikeButton` for both PostCard and CommentCard components
+
+- How to handle asynchronous function calls in useEffect using loading state
+
+### Area for improvement
+- lazy loading
+- testing code
 - performance check
