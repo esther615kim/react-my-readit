@@ -13,8 +13,6 @@ const DeleteButton = ({id,deleteAComment}) => {
   return (
     <>
       <IconButton
-        mt={1}
-        sx={{ position: "absolute", right: 2 }}
         onClick={handleClickDelete}
       >
         <DeleteOutlineIcon className="delete" />

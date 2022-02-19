@@ -1,5 +1,6 @@
-import { Divider, Avatar, IconButton, Box } from "@mui/material";
-import Votes from "./Votes";
+import { Divider, Avatar, Box, Stack } from "@mui/material";
+import LikeButton from "../LikeButton";
+import { StyledLikedButton } from "../posts.styled";
 
 import DeleteButton from "./DeleteButton";
 
@@ -15,14 +16,19 @@ const CommentCard = ({ comments, deleteAComment }) => {
                 <h5>{item.author}</h5>
                 <h6>{item.created_at.substr(0, 10)}</h6>
               </div>
-              <Votes item={item} />
+              {/* <Votes item={item} /> */}
+              <Stack  className="buttons">
+              <StyledLikedButton>
+                <LikeButton/>
+                 {item.votes}
+                  </StyledLikedButton>
+                <DeleteButton
+                  id={item?.comment_id}
+                  deleteAComment={deleteAComment}
+                />
+                </Stack>
             </div>
-            <p>
-              {item.body}
-              <DeleteButton 
-              id={item?.comment_id}
-              deleteAComment={deleteAComment} />
-            </p>
+            <p>{item.body}</p>
             <Divider />
           </Box>
         );
