@@ -14,6 +14,11 @@ import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { StyledStack } from "./Comments/comments.styled";
 
 const PostCard = ({ articles }) => {
+
+  
+
+
+
   const [page, setPage] = useState(1);
   return (
     <>

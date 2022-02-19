@@ -1,39 +1,61 @@
 import { Paper, Stack, Avatar, Typography, Container } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { StyledBox } from "./posts.styled";
-import { useParams, useLocation } from "react-router-dom";
-import { Chip } from "@mui/material/";
+import { useParams, useLocation,useNavigate } from "react-router-dom";
+import { Chip, IconButton } from "@mui/material/";
 import { lime } from "@mui/material/colors";
-import Comments from './Comments/index';
-import { Link } from 'react-router-dom';
+import Comments from "./Comments/index";
+import { Link } from "react-router-dom";
+import AuthContext from "../../contexts/authContext";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ArticleContext from "../../contexts/articleContext";
 
-const SinglePost = ({ item }) => {
+const SinglePost = () => {
   const { id } = useParams();
   const location = useLocation();
   const { from } = location.state;
+  const { username } = useContext(AuthContext);
+  const { deleteAPost } = useContext(ArticleContext);
+  const navigate = useNavigate();
 
-  console.log(id, item);
+  const handleClickDelete = (e) => {
+
+    e.preventDefault();
+    deleteAPost(id);
+    navigate("/");
+
+  };
+
   return (
     <StyledBox>
-      <Link to={'/user'} state={{from:from.author}}>
-      <div className="author-box">
-        <Avatar
-          className="svg"
-          sx={{ bgcolor: lime[200], width: 50, height: 50 }}
-        ></Avatar>
-        <h5>{from.author}</h5>
-      </div>
+      <Link to={"/user"} state={{ from: from.author }}>
+        <div className="author-box">
+          <Avatar
+            className="svg"
+            sx={{ bgcolor: lime[200], width: 50, height: 50 }}
+          ></Avatar>
+          <h5>{from.author}</h5>
+        </div>
       </Link>
       <Paper sx={{ minHeight: "80vh", p: 3 }}>
         <Container>
-          <h3>{from.title}</h3>
+          <h3>
+            {from.title}
+            {from.author === username && (
+              <IconButton onClick={handleClickDelete}>
+                <DeleteOutlineIcon className="delete" />
+              </IconButton>
+            )}
+          </h3>
           <Stack
             direction="row"
             justifyContent="space-around"
             alignItems="center"
           >
             <Chip label={from.topic} variant="outlined" size="small" />
-            <Typography variant="button">{from.created_at.substr(0,10)}</Typography>
+            <Typography variant="button">
+              {from.created_at.substr(0, 10)}
+            </Typography>
           </Stack>
 
           <p>{from.body}</p>

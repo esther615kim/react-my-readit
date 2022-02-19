@@ -23,11 +23,20 @@ https://v5.reactrouter.com/web/api/Hooks/uselocation
   const location = useLocation();
   const {from} = location.state;
 ```
+- How to use `useNavigate()` to redirect a path
+```js
+  const navigate = useNavigate();
+
+  const handleClickDelete = (e) => {
+
+    e.preventDefault();
+    deleteAPost(id);
+    navigate("/");
+```
 
   `React`
 - context and useReducer for global management
 - How to handle asynchronous functions in useEffect
 
   `Others` (to-dos)
-- lazy-loading
 - performance check

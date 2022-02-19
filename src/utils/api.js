@@ -5,6 +5,16 @@ const dataApi = axios.create({
     // baseURL:"https://ek-reddit.herokuapp.com/api"
 })
 
+
+export const getTopics = ()=>{
+    return dataApi.get("/topics")
+    .then(({data})=>{ 
+        return data.topics;
+    })
+}
+
+// posts
+
 export const getAllPosts = ()=>{
     return dataApi.get("/articles")
     .then(({data})=>{ 
@@ -20,13 +30,6 @@ export const getPostsbyUser = (user)=>{
         const result = res.filter((item)=> item.author ===user);
         console.log(user,"byUser",result);
         return result;
-    })
-}
-
-export const getTopics = ()=>{
-    return dataApi.get("/topics")
-    .then(({data})=>{ 
-        return data.topics;
     })
 }
 
@@ -53,6 +56,21 @@ export const getSinglePost = (id)=>{
         console.log(data.article);
         return data.article;
     })
+}
+
+export const deletePost = (id)=>{
+
+    return dataApi.get("/articles")
+    .then(({data})=>{ 
+
+        if(data.articles.filter((item)=> item.article_id === parseInt(id))){
+            return dataApi.delete(`articles/${id}`);
+        }else{
+            console.log("invalid article")
+            return;
+        }
+    }).catch((err)=>console.log(err));
+
 }
 
 // comments 
@@ -89,18 +107,13 @@ export const deleteComment =(id) =>{
     return dataApi.get("/comments")
     .then(({data})=>{ 
 
-        console.log("to delete", data.comments.filter((item)=> item.comment_id == parseInt(id)));
-
         if(data.comments.filter((item)=> item.comment_id === parseInt(id))){
             return dataApi.delete(`comments/${id}`);
         }else{
             console.log("nothing to delete")
             return;
         }
-    })
-
-
-
+    }).catch((err)=>console.log(err));
 }
 
 //users

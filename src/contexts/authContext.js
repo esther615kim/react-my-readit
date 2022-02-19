@@ -34,8 +34,7 @@ export const AuthProvider =({children})=>{
                 payload:username,
                 loggedin:true,
             })}
-
-
+       
     return(
         <AuthContext.Provider
         value={{
