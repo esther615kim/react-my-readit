@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box,Button } from '@mui/material';
+import { Box,Button,Paper } from '@mui/material';
 
 export const StyledDiv = styled.div`
 
@@ -122,4 +122,7 @@ height:100%;
         min-height:12rem;
 
     }
+`
+
+export const StyledPaper = styled(Paper)`
 `

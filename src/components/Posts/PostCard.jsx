@@ -5,20 +5,20 @@ import {
   Button,
   Grid,
   Typography,
+  LinearProgress,
   Pagination,
 } from "@mui/material";
 import StickyNote2Icon from "@mui/icons-material/StickyNote2";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
-import { ArrowUpward, ArrowDownward } from "@mui/icons-material";
-import { StyledStack } from "./Comments/comments.styled";
 import LikeButton from "./LikeButton";
 import { StyledLikedButton } from './posts.styled';
 
 const PostCard = ({articles}) => {
   const [page, setPage] = useState(1);
 
-  return (
+  if (!articles) return <LinearProgress color="inherit" />;
+
+  if(articles) return (
     <>
       {articles
         .slice((page - 1) * 10, (page - 1) * 10 + 10) // 10 per page

@@ -17,11 +17,11 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   let navigate = useNavigate();
-  const {setUserLogin,loading, getUsersInfo,allUsers,} =
+  const {setUserLogin,loading, getAllUsersInfo,allUsers,} =
     useContext(AuthContext);
 
   useEffect(() => {
-    getUsersInfo();
+    getAllUsersInfo();
   },[loading]);
 
   const handleClickDefaultUser = (e) => {

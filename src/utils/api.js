@@ -128,7 +128,7 @@ export const getAllUsers = ()=>{
 export const getByUsername = (username)=>{
     return dataApi.get(`users/${username}`)
     .then(({data})=>{
-        console.log(data.users);
-        return data.users;
+        console.log(data.user);
+        return data.user;
     })
 }

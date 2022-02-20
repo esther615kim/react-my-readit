@@ -7,7 +7,6 @@ const Posts = ({ selected }) => {
   const { articles, loading, setFetchedData, filterByTopic} =
   useContext(ArticleContext);
 
-
   useEffect(() => {
     if (selected === "all") {
       setFetchedData();

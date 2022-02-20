@@ -6,11 +6,13 @@ const authReducer = (state,action) =>{
                allUsers:action.payload,
                loading:false,
             }
+        
 
         case "SET_LOGIN":
             return{
                 ...state,
-                username:action.payload, 
+                username:action.payload.username, 
+                userInfo:action.payload,
                 loggedin:true,
             }
         default:

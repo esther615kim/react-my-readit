@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Box, Stack } from "@mui/material";
 
-export const StyledDiv = styled.div`
+export const StyledCommentDiv = styled.div`
   text-align: left;
 
   .submit {

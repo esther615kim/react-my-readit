@@ -1,5 +1,5 @@
 import {createContext, useReducer} from 'react';
-import { getAllUsers} from './../utils/api';
+import { getAllUsers,getByUsername} from './../utils/api';
 import authReducer from './authReducers';
 
 const AuthContext = createContext();
@@ -10,6 +10,7 @@ export const AuthProvider =({children})=>{
     const initialState={
         allUsers:null,
         username:null,
+        userInfo:null,
         loggedin:false,
         loading:true,
     }
@@ -17,7 +18,7 @@ export const AuthProvider =({children})=>{
     const [state,dispatch] = useReducer(authReducer,initialState)
 
 
-    const getUsersInfo = async()=>{
+    const getAllUsersInfo = async()=>{
         const updatedInfo = await getAllUsers();
 
         dispatch({
@@ -26,12 +27,13 @@ export const AuthProvider =({children})=>{
             loading:false,
         })}
 
-        const setUserLogin = (username)=>{
-            console.log("login",username);
+        const setUserLogin = async(username)=>{
+            const updatedInfo = await getByUsername(username);
+            console.log("login info", updatedInfo);
     
             dispatch({
                 type:"SET_LOGIN",
-                payload:username,
+                payload:updatedInfo,
                 loggedin:true,
             })}
        
@@ -41,8 +43,9 @@ export const AuthProvider =({children})=>{
             allUsers:state.allUsers,
             loading:state.loading,
             loggedin:state.loggedin,
+            userInfo:state.userInfo,
             username:state.username,
-            getUsersInfo,
+            getAllUsersInfo,
             setUserLogin
         }}>
             {children}

@@ -10,12 +10,11 @@ import { Typography } from '@mui/material';
 
 const Banner = () => {
 
-  const { allUsers, loading, getUsersInfo } =
+  const { allUsers, loading, getAllUsersInfo } =
   useContext(AuthContext);
 
   useEffect(() => {
-    getUsersInfo();
-    console.log("now using reducer",allUsers);
+    getAllUsersInfo();
   }, [loading]);
 
   const responsive =     {

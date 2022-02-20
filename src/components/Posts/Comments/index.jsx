@@ -7,7 +7,7 @@ import {
   Button,
   LinearProgress,
 } from "@mui/material";
-import { StyledDiv } from "./comments.styled";
+import { StyledCommentDiv } from "./comments.styled";
 import { deleteComment, getCommentsByPost } from "../../../utils/api";
 import CommentCard from "./CommentCard.";
 import CommentForm from "./CommentForm";
@@ -43,15 +43,15 @@ const Comments = ({ id }) => {
 
   if (loading)
     return (
-      <StyledDiv>
+      <StyledCommentDiv>
         <Divider />
         <LinearProgress color="inherit" />
-      </StyledDiv>
+      </StyledCommentDiv>
     );
 
   if (!loading)
     return (
-      <StyledDiv>
+      <StyledCommentDiv>
         <Divider />
         <h4>{articleComments.length} comments</h4>
         <CommentForm addNewComment={addNewComment} />
@@ -60,7 +60,7 @@ const Comments = ({ id }) => {
           comments={articleComments}
           deleteAComment={deleteAComment}
         />
-      </StyledDiv>
+      </StyledCommentDiv>
     );
 };
 
