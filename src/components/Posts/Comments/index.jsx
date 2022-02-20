@@ -13,6 +13,7 @@ const Comments = ({ id }) => {
     articleComments,
     updateCommentsByArticle,
     updateCommentVotes,
+    fetchCommentsByVotes,
     loading,
   } = useContext(CommentContext);
   const { username } = useContext(AuthContext);
@@ -35,6 +36,15 @@ const Comments = ({ id }) => {
     });
   };
 
+  const handleCLickSorting = (e)=>{
+    e.preventDefault();
+    if(e.nativeEvent.target.textContent ==="popular"){ 
+      fetchCommentsByVotes(id);
+    }else{
+      updateCommentsByArticle(id);
+    }
+  }
+
   if (loading)
     return (
       <StyledCommentDiv>
@@ -55,8 +65,8 @@ const Comments = ({ id }) => {
         >
           <h4 className="comment-title">{articleComments.length} comments</h4>
           <div>
-          <Chip sx={{mr:1, px:0.5}} label="latest"  clickable />
-          <Chip label="popular" variant="outlined" clickable />
+          <Chip id="date" sx={{mr:1, px:0.5}} label="latest"  clickable onClick={handleCLickSorting}/>
+          <Chip label="popular" variant="outlined" clickable onClick={handleCLickSorting} />
           </div>
         </Stack>
         <CommentForm addNewComment={addNewComment} />

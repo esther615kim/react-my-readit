@@ -82,6 +82,13 @@ export const getCommentsByPost = (id)=>{
     })
 }
 
+export const getCommentsByVotes = (id)=>{
+    return dataApi.get("/comments?sort_by=votes")
+    .then(({data})=>{ 
+        return data?.comments.filter((item)=> item.article_id === parseInt(id))
+    })
+}
+
 export const patchVotestoComment =(comment_id,number=1)=>{
     return dataApi.patch(`/comments/${comment_id}`,{"votes":number})
     .catch((err)=>console.log(err));
