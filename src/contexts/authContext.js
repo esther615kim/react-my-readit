@@ -6,7 +6,6 @@ const AuthContext = createContext();
 
 export const AuthProvider =({children})=>{
 
-
     const initialState={
         allUsers:null,
         username:null,
@@ -16,7 +15,6 @@ export const AuthProvider =({children})=>{
     }
 
     const [state,dispatch] = useReducer(authReducer,initialState)
-
 
     const getAllUsersInfo = async()=>{
         const updatedInfo = await getAllUsers();
@@ -35,6 +33,15 @@ export const AuthProvider =({children})=>{
                 payload:updatedInfo,
                 loggedin:true,
             })}
+
+            const setUserLogout = ()=>{
+        
+                dispatch({
+                    type:"SET_LOGOUT",
+                    username:null,
+                    loggedin:false,
+                })}
+
        
     return(
         <AuthContext.Provider
@@ -45,7 +52,8 @@ export const AuthProvider =({children})=>{
             userInfo:state.userInfo,
             username:state.username,
             getAllUsersInfo,
-            setUserLogin
+            setUserLogin,
+            setUserLogout
         }}>
             {children}
             </AuthContext.Provider>

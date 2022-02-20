@@ -16,7 +16,7 @@ import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const {setUserLogin,loading, getAllUsersInfo,allUsers,} =
     useContext(AuthContext);
 
@@ -26,7 +26,7 @@ const LoginPage = () => {
 
   const handleClickLoginButton = (e) => {
     e.preventDefault();
-    setUserLogin(e.target.value); //username
+    e.target.value ? setUserLogin(e.target.value) : setUserLogin(e.nativeEvent.target.textContent);
     navigate("/");
   };
 

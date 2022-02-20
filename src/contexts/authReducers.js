@@ -15,6 +15,13 @@ const authReducer = (state,action) =>{
                 userInfo:action.payload,
                 loggedin:true,
             }
+
+            case "SET_LOGOUT":
+                return{
+                    ...state,
+                    username:null,
+                    loggedin:false,
+                }
         default:
             return state; // no action but just return current state
     }

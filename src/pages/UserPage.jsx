@@ -1,7 +1,7 @@
 import { StyledBox } from "../components/Auth/auth.styled";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../contexts/authContext";
-import { Avatar, ButtonGroup, Button, Container,LinearProgress, Grid } from "@mui/material";
+import { Avatar, Chip,ButtonGroup, Button, Container,LinearProgress, Grid } from "@mui/material";
 import { getPostsbyUser } from "../utils/api";
 import PostCard from "../components/Posts/PostCard";
 import { StyledDiv } from "../components/Posts/posts.styled";
@@ -18,6 +18,7 @@ const UserPage = () => {
   const [comments, setComments] = useState();
   const [isArticles, setIsArticles] = useState(true);
 
+  const {username} = useContext(AuthContext);
 
   useEffect(() => {
 
@@ -40,13 +41,20 @@ const handleClickbtn = (e) => {
     }
   };
 
+  const handleClickLogout = ()=>{
+    console.log("logout");
+  }
+
   if (!articles) return <LinearProgress color="inherit" />;
 
   if (articles)
     return (
       <StyledBox>
+
       <Avatar sx={{ width: 80, height: 80 }}/>
-      <h4>{from}</h4>
+      <h4>{from}
+      {username===from &&<Chip id="date" sx={{ml:1}} label="logout"  clickable onClick={handleClickLogout}/>}
+      </h4>
       <ButtonGroup
         sx={{ mb: 2 }}
         color="inherit"
