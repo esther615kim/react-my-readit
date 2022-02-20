@@ -22,7 +22,6 @@ const App = () => {
   const [theme, setTheme] = useState("light");
 
   const themeToggler = () => {
-    console.log("theme changed");
     setTheme((prev) =>
       prev === "light" ? setTheme("dark") : setTheme("light")
     );

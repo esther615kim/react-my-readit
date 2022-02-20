@@ -24,15 +24,12 @@ export const ArticleProvider =({children})=>{
     } 
 
     const deleteAPost = async(id) =>{
-      const deleteRequest = await deletePost(id); // working properly?
-      console.log("article to delete", id)
+      const deleteRequest = await deletePost(id);
       const updatedArticles = await setFetchedData();
-      console.log("업데이트",articles)
       return updatedArticles;
     }
 
     const updateVotes = async(id,vote) =>{
-      console.log("id",id)
       const res = await patchVotetoArticle(id,vote);
 
       const updatedArticles = await setFetchedData();

@@ -17,7 +17,6 @@ export const CommentProvider =({children})=>{
     // get all comments
     const updatedComments = await getAllComments();
     setComments(updatedComments);
-    console.log("updated comments", comments);
     setLoading(pre=>false);
     } 
 
@@ -26,12 +25,10 @@ export const CommentProvider =({children})=>{
         getCommentsByPost(id).then((updated) => {
             setArticleComments(updated);
             setLoading(pre=>false);
-            console.log()
     })
 }
     // update votes
     const updateCommentVotes = async(article_id,id,vote) =>{ // comment_id
-        console.log("comment_id",id)
         const res = await patchVotestoComment(id,vote);
         const updatedComments = await updateCommentsByArticle(article_id); 
         return updatedComments;

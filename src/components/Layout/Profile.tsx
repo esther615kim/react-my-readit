@@ -9,7 +9,6 @@ import { StyledDiv } from './layout.styled';
 const Profile = () => {
 
   const {loggedin,username} = useContext(AuthContext);
-  console.log("login:",loggedin)
 
   return <StyledDiv>
      <Link to={loggedin?"profile": "login"} >

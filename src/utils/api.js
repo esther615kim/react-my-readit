@@ -28,16 +28,14 @@ export const getPostsbyUser = (user)=>{
         return data.articles;
     }).then((res)=>{
         const result = res.filter((item)=> item.author ===user);
-        console.log(user,"byUser",result);
         return result;
     })
 }
 
 //404
 export const patchVotetoArticle = (article_id,number=1) =>{
-    console.log(article_id,number);
+
     return dataApi.patch(`/articles/${article_id}`,{"votes":number})
-    .then((res)=>console.log(res))
     .catch((err)=>console.log(err));
 }
 
@@ -53,7 +51,6 @@ export const getPostsByTopic = (topic)=>{
 export const getSinglePost = (id)=>{
     return dataApi.get(`articles/${id}`)
     .then(({data})=>{
-        console.log(data.article);
         return data.article;
     })
 }
@@ -66,7 +63,6 @@ export const deletePost = (id)=>{
         if(data.articles.filter((item)=> item.article_id === parseInt(id))){
             return dataApi.delete(`articles/${id}`);
         }else{
-            console.log("invalid article")
             return;
         }
     }).catch((err)=>console.log(err));
@@ -88,18 +84,15 @@ export const getCommentsByPost = (id)=>{
 
 export const patchVotestoComment =(comment_id,number=1)=>{
     return dataApi.patch(`/comments/${comment_id}`,{"votes":number})
-    .then((res)=>console.log(res))
     .catch((err)=>console.log(err));
 }
 
 export const postComment = (article_id, author, body) => {
 
     const commentObj = { author, body };
-    console.log("sending",commentObj);
 
     return dataApi.post(`/articles/${article_id}/comments`, commentObj)
                     .then(({data}) => {
-                        console.log(data.comment);
                         return(data.comment);
                     })
 }
@@ -111,7 +104,6 @@ export const deleteComment =(id) =>{
         if(data.comments.filter((item)=> item.comment_id === parseInt(id))){
             return dataApi.delete(`comments/${id}`);
         }else{
-            console.log("nothing to delete")
             return;
         }
     }).catch((err)=>console.log(err));
@@ -128,7 +120,6 @@ export const getAllUsers = ()=>{
 export const getByUsername = (username)=>{
     return dataApi.get(`users/${username}`)
     .then(({data})=>{
-        console.log(data.user);
         return data.user;
     })
 }

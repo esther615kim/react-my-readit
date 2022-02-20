@@ -22,7 +22,6 @@ const Comments = ({ id }) => {
 
   useEffect(() => {
     updateCommentsByArticle(id);
-    console.log(articleComments);
   }, [id, loading]);
 
   const addNewComment = async (newComment) => {
@@ -38,8 +37,6 @@ const Comments = ({ id }) => {
       });
     });
   };
-
-  console.log(articleComments);
 
   if (loading)
     return (

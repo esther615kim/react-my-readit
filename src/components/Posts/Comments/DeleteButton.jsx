@@ -6,7 +6,6 @@ const DeleteButton = ({id,deleteAComment}) => {
 
   const handleClickDelete = (e) => {
       e.preventDefault();
-      console.log(id);
       deleteAComment(id);
   };
 

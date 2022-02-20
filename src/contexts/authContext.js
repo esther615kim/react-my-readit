@@ -29,7 +29,6 @@ export const AuthProvider =({children})=>{
 
         const setUserLogin = async(username)=>{
             const updatedInfo = await getByUsername(username);
-            console.log("login info", updatedInfo);
     
             dispatch({
                 type:"SET_LOGIN",

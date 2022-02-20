@@ -12,7 +12,6 @@ const Posts = ({ selected }) => {
       setFetchedData();
     } else {
       filterByTopic(selected);
-      console.log(selected, articles);
     }
 
   }, [selected, loading]);
