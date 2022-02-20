@@ -14,7 +14,6 @@ export const ArticleProvider =({children})=>{
     const setFetchedData = async() =>{
       const updatedArticles = await getAllPosts();
       setArticles(updatedArticles);
-      console.log("아티클세팅",setArticles);
       setLoading(pre=>false);
     } 
 

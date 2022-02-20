@@ -41,7 +41,7 @@ const App = () => {
                 <Route path="/create" element={<CreatePage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/user" element={<UserPage />} />
+                <Route path="/user/:id" element={<UserPage />} />
                 <Route path="/posts/:id" element={<DetailPage />} />
               </Routes>
               <BottomNav />

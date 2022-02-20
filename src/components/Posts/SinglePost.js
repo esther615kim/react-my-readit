@@ -28,7 +28,7 @@ const SinglePost = () => {
 
   return (
     <StyledBox>
-      <Link to={"/user"} state={{ from: from.author }}>
+      <Link to={`/user/${from.author}`} state={{ from: from.author }}>
         <div className="author-box">
           <Avatar
             className="svg"
