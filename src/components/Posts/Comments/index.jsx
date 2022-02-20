@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from "react";
-import {
-  Divider,
-  OutlinedInput,
-  FormControl,
-  Typography,
-  Button,
-  LinearProgress,
-} from "@mui/material";
+import { Divider, Stack, LinearProgress, Chip } from "@mui/material";
 import { StyledCommentDiv } from "./comments.styled";
 import { deleteComment, getCommentsByPost } from "../../../utils/api";
 import CommentCard from "./CommentCard.";
@@ -16,8 +9,12 @@ import AuthContext from "../../../contexts/authContext";
 import CommentContext from "../../../contexts/commentContext";
 
 const Comments = ({ id }) => {
-  const { articleComments, updateCommentsByArticle,updateCommentVotes, loading } =
-    useContext(CommentContext);
+  const {
+    articleComments,
+    updateCommentsByArticle,
+    updateCommentVotes,
+    loading,
+  } = useContext(CommentContext);
   const { username } = useContext(AuthContext);
 
   useEffect(() => {
@@ -50,10 +47,21 @@ const Comments = ({ id }) => {
     return (
       <StyledCommentDiv>
         <Divider />
-        <h4>{articleComments.length} comments</h4>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          spacing={2}
+        >
+          <h4 className="comment-title">{articleComments.length} comments</h4>
+          <div>
+          <Chip sx={{mr:1, px:0.5}} label="latest"  clickable />
+          <Chip label="popular" variant="outlined" clickable />
+          </div>
+        </Stack>
         <CommentForm addNewComment={addNewComment} />
         <CommentCard
-        updateCommentVotes={updateCommentVotes}
+          updateCommentVotes={updateCommentVotes}
           comments={articleComments}
           deleteAComment={deleteAComment}
         />

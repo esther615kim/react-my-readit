@@ -14,6 +14,9 @@ export const StyledCommentDiv = styled.div`
     text-align: center;
     color: #d9541c;
   }
+  .comment-title{
+    margin-right:2rem;
+  }
   .user-box {
     padding-top: 0.5rem;
     position: relative;

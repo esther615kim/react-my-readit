@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {createContext} from 'react';
 import axios from 'axios';
-import { getAllComments,patchVotestoComment, dataApi,getCommentsByPost } from './../utils/api';
+import { getAllComments,patchVotestoComment, getCommentsByPost } from './../utils/api';
 
 
 const CommentContext = createContext();
@@ -12,7 +12,7 @@ export const CommentProvider =({children})=>{
     const [articleComments,setArticleComments] = useState([]);
     const [loading,setLoading] = useState(true);
 
-    const setFetchedComments= async() =>{ // ALL comments
+    const setFetchedComments= async() =>{ 
 
     // get all comments
     const updatedComments = await getAllComments();
@@ -28,7 +28,7 @@ export const CommentProvider =({children})=>{
     })
 }
     // update votes
-    const updateCommentVotes = async(article_id,id,vote) =>{ // comment_id
+    const updateCommentVotes = async(article_id,id,vote) =>{ 
         const res = await patchVotestoComment(id,vote);
         const updatedComments = await updateCommentsByArticle(article_id); 
         return updatedComments;
