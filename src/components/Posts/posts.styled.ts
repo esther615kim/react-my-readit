@@ -125,4 +125,5 @@ height:100%;
 `
 
 export const StyledPaper = styled(Paper)`
+
 `

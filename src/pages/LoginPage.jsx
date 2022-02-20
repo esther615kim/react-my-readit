@@ -24,7 +24,7 @@ const LoginPage = () => {
     getAllUsersInfo();
   },[loading]);
 
-  const handleClickDefaultUser = (e) => {
+  const handleClickLoginButton = (e) => {
     e.preventDefault();
     setUserLogin(e.target.value); //username
     navigate("/");
@@ -48,9 +48,7 @@ const LoginPage = () => {
           color="secondary"
           variant="outlined"
           value={allUsers[0].username}
-          onClick={(e) => {
-            handleClickDefaultUser(e);
-          }}
+          onClick={handleClickLoginButton}
         >
           login
         </Button>
@@ -62,20 +60,17 @@ const LoginPage = () => {
         <List>
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
             <Avatar size="small" src={allUsers[1].avatar_url} />
-            <Typography ml={2} variant="subtitle2">
+            <Typography ml={2}
+            onClick={handleClickLoginButton}
+             variant="subtitle2">
               {allUsers[1].username}
             </Typography>
           </ListItem>
+
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
             <Avatar size="small" src={allUsers[2].avatar_url} />
             <Typography ml={2} variant="subtitle2">
               {allUsers[2].username}
-            </Typography>
-          </ListItem>
-          <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
-            <Avatar size="small" src={allUsers[3].avatar_url} />
-            <Typography ml={3} variant="subtitle2">
-              {allUsers[3].username}
             </Typography>
           </ListItem>
         </List>
