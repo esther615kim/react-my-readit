@@ -15,6 +15,7 @@ import { AuthProvider } from "./contexts/authContext";
 import { CommentProvider } from "./contexts/commentContext";
 import LoginPage from "./pages/LoginPage";
 import UserPage from "./pages/UserPage";
+import Page404 from './pages/Page404';
 
 const App = () => {
   // dark/light theme
@@ -43,6 +44,8 @@ const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/user/:id" element={<UserPage />} />
                 <Route path="/posts/:id" element={<DetailPage />} />
+                {/* <Route path="/error" element={<Page404 />} /> */}
+                <Route path="*" element={<Page404 />} />
               </Routes>
               <BottomNav />
             </StyledApp>
