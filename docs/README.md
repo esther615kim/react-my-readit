@@ -4,8 +4,6 @@
 <p align="center">React CRUD App </p>
 </div>
 
-## Project
-React CRUD app
 ### backend repo
 -  https://github.com/esther615kim/nodejs-jest-my-readit
 
