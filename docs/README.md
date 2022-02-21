@@ -2,7 +2,7 @@
 <h1 align="center"> MyReadit</h1><p align="center">
 <div align="center">
 <p align="center">React CRUD App </p>
-  <p align="center"><a href="">Vercel-deployed App</a></p>
+  <p align="center"><a href="">Vercel-deployed App (to-be-updated)</a></p>
 </div>
 
 ### backend repo
@@ -10,6 +10,15 @@
 
 ### hosted backend project 
 - https://dashboard.heroku.com/apps/ek-reddit/api
+
+### Stack Used
+- React 
+- MUI
+- Styled Component
+- TypeScript (partially)
+
+### Screenshot
+<img src="https://images.velog.io/images/ek615/post/f58688e6-7354-4415-b13a-60834a271fb0/image.png" width="350"> 
 
 ### 📣 How to run
 
