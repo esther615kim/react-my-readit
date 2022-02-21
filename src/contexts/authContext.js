@@ -1,6 +1,7 @@
 import {createContext, useReducer} from 'react';
 import { getAllUsers,getByUsername} from './../utils/api';
 import authReducer from './authReducers';
+import { useEffect } from 'react';
 
 const AuthContext = createContext();
 
@@ -13,8 +14,17 @@ export const AuthProvider =({children})=>{
         loggedin:false,
         loading:true,
     }
+   // localStroage
+    const [state,dispatch] = useReducer(authReducer,initialState
+    //     ,()=>{
+    //     const localData = localStorage.getItem('state');
+    //     return localData ? JSON.parse(localData):{};
+    // }
+    );
 
-    const [state,dispatch] = useReducer(authReducer,initialState)
+    // useEffect(()=>{
+    //     localStorage.setItem('state',JSON.stringify(state));
+    // },[state])
 
     const getAllUsersInfo = async()=>{
         const updatedInfo = await getAllUsers();

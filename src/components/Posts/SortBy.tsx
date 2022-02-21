@@ -1,5 +1,5 @@
 import { StyledWrapper } from './posts.styled';
-import { IconButton, Select } from '@mui/material';
+import { IconButton,InputLabel,FormControl,NativeSelect } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import { useState } from 'react';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -10,22 +10,29 @@ export default function SortBy() {
 
   return (
     <StyledWrapper>
-      <IconButton>
-      <MoreVertIcon/>
-      </IconButton>
-        {/* <Select sx={{fontSize:12,height:30, width:60, borderRadius:30,background:"#efef"}} 
-        value={sorting} 
-        onChange={
-            // (event:React.ChangeEvent<HTMLInputElement>):void => {
-                (event:any):void => {
-                setSorting(event.target.value);
-              }
-            
-        }>
-          <MenuItem value={10}>topic</MenuItem>
-          <MenuItem value={20}>desc</MenuItem>
-          <MenuItem value={30}>asc</MenuItem>
-        </Select> */}
+<FormControl margin="dense" size="small" variant="outlined" sx={{width:60}}>
+  <NativeSelect sx={{fontSize:'0.6rem'}}
+    defaultValue={"desc"}
+    inputProps={{
+      name: 'sort_by'
+    }}
+  >
+    <option value={"created_at"}>date</option>
+    <option value={"votes"}>popular</option>
+    <option value={"title"}>title</option>
+  </NativeSelect>
+</FormControl>
+<FormControl margin="dense" size="small" variant="outlined" sx={{width:60}}>
+  <NativeSelect  sx={{fontSize:'0.6rem'}}
+    defaultValue={"desc"}
+    inputProps={{
+      name: 'order'
+    }}
+  >
+    <option value={"desc"}>desc</option>
+    <option value={"asc"}>asc</option>
+  </NativeSelect>
+</FormControl>
     </StyledWrapper>
   )
 }

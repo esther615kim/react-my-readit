@@ -17,16 +17,19 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const {setUserLogin,loading, getAllUsersInfo,allUsers,} =
+  const { setUserLogin, loading, getAllUsersInfo, allUsers } =
     useContext(AuthContext);
 
   useEffect(() => {
     getAllUsersInfo();
-  },[loading]);
+  }, [loading]);
 
   const handleClickLoginButton = (e) => {
     e.preventDefault();
-    e.target.value ? setUserLogin(e.target.value) : setUserLogin(e.nativeEvent.target.textContent);
+    console.log(e.nativeEvent.target?.textContent);
+    e.target.value
+      ? setUserLogin(e.target.value)
+      : setUserLogin(e.nativeEvent.target.textContent);
     navigate("/");
   };
 
@@ -38,10 +41,7 @@ const LoginPage = () => {
         <Typography m={2} variant="h6">
           Welcome back
         </Typography>
-        <Avatar
-          src={allUsers[0].avatar_url}
-          sx={{ width: 100, height: 100 }}
-        />
+        <Avatar src={allUsers[0].avatar_url} sx={{ width: 100, height: 100 }} />
         <h3>{allUsers[0].username}</h3>
 
         <Button
@@ -60,16 +60,22 @@ const LoginPage = () => {
         <List>
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
             <Avatar size="small" src={allUsers[1].avatar_url} />
-            <Typography ml={2}
-            onClick={handleClickLoginButton}
-             variant="subtitle2">
+            <Typography
+              ml={2}
+              onClick={handleClickLoginButton}
+              variant="subtitle2"
+            >
               {allUsers[1].username}
             </Typography>
           </ListItem>
 
           <ListItem sx={{ border: "1px solid #eee", pr: 5, borderRadius: 2 }}>
             <Avatar size="small" src={allUsers[2].avatar_url} />
-            <Typography ml={2} variant="subtitle2">
+            <Typography
+              ml={2}
+              onClick={handleClickLoginButton}
+              variant="subtitle2"
+            >
               {allUsers[2].username}
             </Typography>
           </ListItem>
