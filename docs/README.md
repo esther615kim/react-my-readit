@@ -2,8 +2,9 @@
 <h1 align="center"> MyReadit</h1><p align="center">
 <div align="center">
 <p align="center">React CRUD App </p>
-<p align="center"><a href="https://ek-reddit.herokuapp.com/articles">Heroku-hosted project</a></p>
+<p align="center"><a href="">Heroku-hosted project</a></p>
 </div>
+`to-be-updated`
 
 ## Project
 React CRUD app
