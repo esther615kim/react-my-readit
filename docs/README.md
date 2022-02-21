@@ -21,6 +21,15 @@ React CRUD app
 
 - minimum versions of `Node.js`: Node.js `v17.1.0`
 
+### Stack Used
+- React
+- Styled Component
+- MUI
+- TypeScript (partially)
+
+### Screenshot
+<img src="https://images.velog.io/images/ek615/post/f58688e6-7354-4415-b13a-60834a271fb0/image.png" width="450"> 
+
 ### ✏ What I've learned
 
   `React`
