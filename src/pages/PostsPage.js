@@ -1,9 +1,10 @@
-import { Stack, Chip, Pagination } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import { Stack, Chip} from "@mui/material";
 import { getTopics } from '../utils/api';
-import SortBy from '../components/Posts/SortBy';
 import { StyledDiv } from "../components/Posts/posts.styled";
 import Posts from './../components/Posts/index';
+import SortBy from '../components/Posts/SortBy';
+import ArticleContext from '../contexts/articleContext';
 
 
 
@@ -11,13 +12,14 @@ const PostsPage = () => {
 
   const [topics, setTopics] = useState([]);
   const [selected,setSelected] =useState("all");
+  const { order,sort_by} = useContext(ArticleContext);
 
   useEffect(() => {
     getTopics()
       .then((res) => {
         setTopics(res);
       })
-  }, [selected]);
+  }, [selected,order,sort_by]);
 
     const handleCategoryClick=(e)=>{
         e.preventDefault();
@@ -50,7 +52,7 @@ const PostsPage = () => {
       </Stack>
       </div>
       {/* POSTS */}
-     <Posts selected={selected}/>
+     <Posts selected={selected} order={order} sort_by={sort_by}/>
     </StyledDiv>
 
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useContext } from "react";
-import ArticleContext from "../../contexts/articleContext";
-import PostCard from './PostCard';
 import {Grid} from "@mui/material";
+import PostCard from './PostCard';
+import ArticleContext from "../../contexts/articleContext";
 
-const Posts = ({ selected }) => {
-  const { articles, loading, setFetchedData,filterByQueries,order,sort_by} =
-  useContext(ArticleContext);
+
+
+const Posts = ({ selected,order,sort_by}) => {
+  const { articles, loading, setFetchedData,filterByQueries} = useContext(ArticleContext);
 
   useEffect(() => {
     if (selected === "all") {

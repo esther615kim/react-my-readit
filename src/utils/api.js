@@ -37,11 +37,9 @@ export const patchVotetoArticle = (article_id,number=1) =>{
 }
 
 export const getPostsByTopic = (sort_by,order,topic)=>{
-    console.log(sort_by,order,topic)
     return dataApi.get(`/articles?topic=${topic}&order=${order}&sort_by=${sort_by}`)
     .then(({data})=>{ 
-        console.log("first",data.articles[0]);
-    //     return data.articles;
+        return data.articles;
     })
 }
 
