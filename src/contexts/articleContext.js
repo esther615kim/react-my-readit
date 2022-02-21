@@ -14,7 +14,7 @@ export const ArticleProvider =({children})=>{
 
 
     const setFetchedData = async() =>{
-      const updatedArticles = await getAllPosts();
+      const updatedArticles = await getAllPosts(sort_by,order);
       setArticles(updatedArticles);
       setLoading(pre=>false);
     } 

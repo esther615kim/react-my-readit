@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-
 import {BottomNavigation,BottomNavigationAction} from '@mui/material';
 import { StyledBox } from './layout.styled';
 import { Link } from 'react-router-dom';
@@ -15,7 +14,7 @@ const BottomNav = () => {
     <BottomNavigation
       showLabels
       value={value}
-      onChange={(event, newValue) => {
+      onChange={(newValue) => {
         setValue(newValue);
       }}
     >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, {useEffect, useContext} from "react";
 import { Divider, Stack, LinearProgress, Chip } from "@mui/material";
 import { StyledCommentDiv } from "./comments.styled";
 import { deleteComment, getCommentsByPost } from "../../../utils/api";

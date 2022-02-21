@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const dataApi = axios.create({
-    baseURL:"http://localhost:8080/api"
-    // baseURL:"https://ek-reddit.herokuapp.com/api"
+    // baseURL:"http://localhost:8080/api"
+    baseURL:"https://ek-reddit.herokuapp.com/api"
 })
 
 export const getTopics = ()=>{
@@ -13,11 +13,15 @@ export const getTopics = ()=>{
 }
 
 // posts
-export const getAllPosts = ()=>{
+export const getAllPosts = (sort_by,order)=>{
     return dataApi.get("/articles")
     .then(({data})=>{ 
         return data.articles;
     })
+    // return dataApi.get(`/articles?topic=${order}&sort_by=${sort_by}`)
+    // .then(({data})=>{ 
+    //     return data.articles;
+    // })
 }
 
 export const getPostsbyUser = (user)=>{

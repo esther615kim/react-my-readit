@@ -9,7 +9,7 @@ const CommentForm = ({ addNewComment }) => {
   const { loggedin } = useContext(AuthContext);
 
   const handleTextChange = (e) => {
-    // input & login validation
+
     if (!loggedin) {
       setMessage("Login is required");
       return;
@@ -32,7 +32,6 @@ const CommentForm = ({ addNewComment }) => {
         addNewComment(newComment);
         setNewText("");
     }
-
   };
 
   return (

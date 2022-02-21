@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-
 import { Divider, Avatar, Box, Stack } from "@mui/material";
-import LikeButton from "../LikeButton";
 import { StyledLikedButton } from "../posts.styled";
+import LikeButton from "../LikeButton";
 import DeleteButton from "./DeleteButton";
 import AuthContext from "../../../contexts/authContext";
 
@@ -16,13 +15,13 @@ const CommentCard = ({ comments, deleteAComment }) => {
           <Box key={item.comment_id}>
             <div className="user-box">
               <Avatar sx={{ width: 26, height: 26, marginRight: 1 }} />
-              <div>
+              <Box sx={{width:"8rem"}}>
                 <h5>{item.author}</h5>
                 <h6>{item.created_at.substr(0, 10)}</h6>
-              </div>
+              </Box>
               {/* DELETE & LIKE BUTTONS */}
               <Stack className="buttons">
-                <StyledLikedButton>
+                <StyledLikedButton sx={{fontSize:12}}>
                   <LikeButton 
                   item={item} />
                   {item.votes}
@@ -35,7 +34,7 @@ const CommentCard = ({ comments, deleteAComment }) => {
                 )}
               </Stack>
             </div>
-            <p>{item.body}</p>
+            <p className="comment">{item.body}</p>
             <Divider />
           </Box>
         );

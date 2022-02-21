@@ -39,6 +39,8 @@ React CRUD app
 #### Authentification
 - only logged in users can create or delete posts/comments
 - users can only delete their own posts/comments
+#### Access text of element without refs
+- `e.nativeEvent.target.textContent` 
 
 `React-router-dom v6`
 #### Send a prop using `useLocation` in `Link`

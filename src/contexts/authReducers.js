@@ -7,7 +7,6 @@ const authReducer = (state,action) =>{
                loading:false,
             }
         
-
         case "SET_LOGIN":
             return{
                 ...state,
@@ -23,7 +22,7 @@ const authReducer = (state,action) =>{
                     loggedin:false,
                 }
         default:
-            return state; // no action but just return current state
+            return state;
     }
 }
 

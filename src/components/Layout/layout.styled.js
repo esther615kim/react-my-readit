@@ -16,7 +16,6 @@ div{
     z-index:9;
 }
 `
-
 export const StyledDiv = styled.div`
 padding:0.4rem;
 a{

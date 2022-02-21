@@ -1,14 +1,13 @@
-import { Paper, Stack, Avatar, Typography, Container } from "@mui/material";
 import React, { useContext } from "react";
+import { Paper, Stack, Avatar, Typography, Container,Chip, IconButton } from "@mui/material";
+import { useParams, useLocation,useNavigate,Link } from "react-router-dom";
 import { StyledBox } from "./posts.styled";
-import { useParams, useLocation,useNavigate } from "react-router-dom";
-import { Chip, IconButton } from "@mui/material/";
 import { lime } from "@mui/material/colors";
 import Comments from "./Comments/index";
-import { Link } from "react-router-dom";
+import ArticleContext from "../../contexts/articleContext";
 import AuthContext from "../../contexts/authContext";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import ArticleContext from "../../contexts/articleContext";
+
 
 const SinglePost = () => {
   const { id } = useParams();
@@ -49,18 +48,15 @@ const SinglePost = () => {
           </h3>
           <Stack
             direction="row"
-            justifyContent="space-around"
+            justifyContent="space-between"
             alignItems="center"
           >
-            <Chip label={from.topic} variant="outlined" size="small" />
+            <Chip label={from.topic} variant="outlined" color="success"size="small" />
             <Typography variant="button">
               {from.created_at.substr(0, 10)}
             </Typography>
           </Stack>
-
-          <p>{from.body}</p>
-
-          {/* COMMENTS */}
+          <p className="post-text">{from.body}</p>
           <Comments id={id} />
         </Container>
       </Paper>

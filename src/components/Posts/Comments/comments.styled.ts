@@ -3,12 +3,11 @@ import { Box, Stack } from "@mui/material";
 
 export const StyledCommentDiv = styled.div`
   text-align: left;
-
   .submit {
     margin: 1rem 0;
   }
   h6 {
-    font-weight: 400;
+    font-size:0.6rem;
   }
   .message {
     text-align: center;
@@ -27,9 +26,11 @@ export const StyledCommentDiv = styled.div`
       margin: 0.2rem;
     }
   }
-  p {
+  .comment{
     min-height: 2rem;
+    line-height:1rem;
     text-indent: 0;
+    font-size:0.9rem;
     padding-bottom: 0.4rem;
     margin: 0.2rem;
     position: relative;
@@ -38,11 +39,9 @@ export const StyledCommentDiv = styled.div`
     flex-direction:row;
     justify-content:flex-end;
     width:100%;
-    
 }
   .delete,.liked{
       font-size:0.8em;
-
   }
 `;
 export const StyledStack = styled(Stack)`

@@ -1,18 +1,14 @@
-import { Button } from '@mui/material';
-import React from 'react'
-import { useState } from 'react';
+import React,{useState,useContext} from 'react'
 import {StyledLikedButton} from './posts.styled'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useContext } from 'react';
 import ArticleContext from '../../contexts/articleContext';
 import CommentContext from '../../contexts/commentContext';
 
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const LikeButton = (item) => {
   const {updateVotes} = useContext(ArticleContext);
   const {updateCommentVotes} =  useContext(CommentContext);
-
   const [isLiked, setIsLiked] = useState(false);
 
   const handleClickLikeButton= (e)=>{
@@ -30,7 +26,6 @@ const LikeButton = (item) => {
 
       setIsLiked(prev=> !prev);
     }
-
   }
 
   return (

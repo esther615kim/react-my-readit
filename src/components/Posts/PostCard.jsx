@@ -3,15 +3,16 @@ import {
   Paper,
   Stack,
   Button,
+  Chip,
   Grid,
   Typography,
   LinearProgress,
   Pagination,
 } from "@mui/material";
-import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
 import { StyledLikedButton } from './posts.styled';
+import StickyNote2Icon from "@mui/icons-material/StickyNote2";
 
 const PostCard = ({articles}) => {
   const [page, setPage] = useState(1);
@@ -21,7 +22,7 @@ const PostCard = ({articles}) => {
   if(articles) return (
     <>
       {articles
-        .slice((page - 1) * 10, (page - 1) * 10 + 10) // 10 per page
+        .slice((page - 1) * 10, (page - 1) * 10 + 10) 
         .map((item) => {
           return (
             <Grid key={item.article_id} item xs={12} sm={5} ml={4}>
@@ -29,16 +30,14 @@ const PostCard = ({articles}) => {
                 <Link
                   to={`/posts/${item.article_id}`}
                   state={{ from: item }}
-                  style={{ textDecoration: "none" }}
                 >
                   <Typography className="h4" variant="subtitle2">
                     {item.title}
                   </Typography>
-                  <span>#{item.topic}</span>
-                  <p>{item.body}</p>
+                  <span className="span">#{item.topic}</span>
+                  <p className="card-text">{item.body}</p>
                 </Link>
-
-                <Stack
+                <Stack className="card-stack" 
                   direction="row"
                   justifyContent="space-between"
                   alignItems="center"

@@ -29,7 +29,5 @@ min-height:80vh;
         font-size:0.9rem;
         line-height:1rem;
         text-align:justify;
-        min-height:12rem;
-
     }
 `

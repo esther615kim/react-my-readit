@@ -1,9 +1,10 @@
 import React from 'react';
-import BottomNav from './BottomNav';
 import Banner from '../Banner/index';
+import Profile from './Profile';
 
 const Layout = () => {
   return <div>
+    <Profile/>
     <Banner/>
   </div>
 };

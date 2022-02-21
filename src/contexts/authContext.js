@@ -14,17 +14,13 @@ export const AuthProvider =({children})=>{
         loggedin:false,
         loading:true,
     }
-   // localStroage
+   // local Stroage?
     const [state,dispatch] = useReducer(authReducer,initialState
     //     ,()=>{
     //     const localData = localStorage.getItem('state');
     //     return localData ? JSON.parse(localData):{};
     // }
     );
-
-    // useEffect(()=>{
-    //     localStorage.setItem('state',JSON.stringify(state));
-    // },[state])
 
     const getAllUsersInfo = async()=>{
         const updatedInfo = await getAllUsers();

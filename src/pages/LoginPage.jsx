@@ -1,19 +1,16 @@
-import { StyledBox } from "../components/Auth/auth.styled";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "../contexts/authContext";
+import { useContext, useEffect } from "react";
 import {
   Avatar,
-  Paper,
   Divider,
   Button,
-  ListItemAvatar,
+  Typography,
   List,
+  LinearProgress,
   ListItem,
-  ListItemText,
 } from "@mui/material";
-import { LinearProgress } from "@mui/material";
-import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { StyledBox } from "../styles/auth.styled";
+import AuthContext from "../contexts/authContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();

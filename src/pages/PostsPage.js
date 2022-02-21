@@ -6,8 +6,6 @@ import Posts from './../components/Posts/index';
 import SortBy from '../components/Posts/SortBy';
 import ArticleContext from '../contexts/articleContext';
 
-
-
 const PostsPage = () => {
 
   const [topics, setTopics] = useState([]);
@@ -29,7 +27,6 @@ const PostsPage = () => {
 
   return (
     <StyledDiv>
-
       {/* CATEGORIES */}
       <div>
       <Stack 

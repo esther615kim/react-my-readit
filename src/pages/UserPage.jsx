@@ -1,24 +1,26 @@
-import { StyledBox } from "../components/Auth/auth.styled";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "../contexts/authContext";
-import { Avatar, Chip,ButtonGroup, Button, Container,LinearProgress, Grid } from "@mui/material";
-import { getPostsbyUser } from "../utils/api";
-import PostCard from "../components/Posts/PostCard";
-import { StyledDiv } from "../components/Posts/posts.styled";
-import { getAllComments } from "./../utils/api";
-import CommentCard from "./../components/Posts/Comments/CommentCard.";
-import { StyledCommentDiv } from './../components/Posts/Comments/comments.styled';
-import { useLocation } from 'react-router-dom';
 
+import { useContext, useEffect, useState } from "react";
+import { Avatar, Chip,ButtonGroup, Button, Container,LinearProgress, Grid } from "@mui/material";
+import { useLocation,useNavigate  } from 'react-router-dom';
+
+import { StyledBox } from "../styles/auth.styled";
+import { StyledCommentDiv } from './../components/Posts/Comments/comments.styled';
+import { StyledDiv } from "../components/Posts/posts.styled";
+import PostCard from "../components/Posts/PostCard";
+import CommentCard from "./../components/Posts/Comments/CommentCard.";
+
+import { getAllComments,getPostsbyUser} from "./../utils/api";
+import AuthContext from "../contexts/authContext";
 
 const UserPage = () => {
   const [articles, setArticles] = useState();
-  const location = useLocation();
-  const { from } = location.state;
   const [comments, setComments] = useState();
   const [isArticles, setIsArticles] = useState(true);
 
-  const {username} = useContext(AuthContext);
+  const {username,setUserLogout } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { from } = location.state;
 
   useEffect(() => {
 
@@ -42,7 +44,8 @@ const handleClickbtn = (e) => {
   };
 
   const handleClickLogout = ()=>{
-    console.log("logout");
+    setUserLogout();
+    navigate("/");
   }
 
   if (!articles) return <LinearProgress color="inherit" />;

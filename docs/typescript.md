@@ -13,9 +13,6 @@ background: ${({ bg }:{bg:string}) => bg || "#fff"};
  children: JSX.Element[] | JSX.Element
 
 
-
-
-
 ErrorLog
 
 #1
