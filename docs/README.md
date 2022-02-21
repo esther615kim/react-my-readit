@@ -2,6 +2,7 @@
 <h1 align="center"> MyReadit</h1><p align="center">
 <div align="center">
 <p align="center">React CRUD App </p>
+  <p align="center"><a href="">Vercel-deployed App</a></p>
 </div>
 
 ### backend repo
@@ -16,7 +17,7 @@
 
 - Run `npm run start` to start the app.
 
-- minimum versions of `Node.js`: Node.js `v17.1.0`
+- minimum version of `Node.js`: Node.js `v17.1.0`
 
 ### ✏ What I've learned
 
@@ -61,7 +62,7 @@
 - Interface types
 
 ### 🕵️‍♀️ Area for improvement
-- [] lazy loading
-- [] testing code
-- [] refactor in TypeScript
+-[ ] lazy loading
+-[ ] testing code
+-[ ] refactor in TypeScript
 
