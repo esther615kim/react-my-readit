@@ -2,7 +2,7 @@
 <h1 align="center"> MyReadit</h1><p align="center">
 <div align="center">
 <p align="center">React CRUD App </p>
-<p align="center"><a href="https://ek-reddit.herokuapp.com/articles">Heroku-hosted project</a></p>
+<p align="center"><a href="https://ek-reddit.herokuapp.com/articles">Vercel-deployed App (to-be-updated)</a></p>
 </div>
 
 ## Project
