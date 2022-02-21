@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const dataApi = axios.create({
-    baseURL:"http://localhost:8080/api"
-    // baseURL:"https://ek-reddit.herokuapp.com/api"
+    // baseURL:"http://localhost:8080/api"
+    baseURL:"https://ek-reddit.herokuapp.com/api"
 })
 
 export const getTopics = ()=>{
