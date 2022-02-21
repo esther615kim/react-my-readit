@@ -5,7 +5,6 @@ export const dataApi = axios.create({
     // baseURL:"https://ek-reddit.herokuapp.com/api"
 })
 
-
 export const getTopics = ()=>{
     return dataApi.get("/topics")
     .then(({data})=>{ 
@@ -14,7 +13,6 @@ export const getTopics = ()=>{
 }
 
 // posts
-
 export const getAllPosts = ()=>{
     return dataApi.get("/articles")
     .then(({data})=>{ 
@@ -32,22 +30,21 @@ export const getPostsbyUser = (user)=>{
     })
 }
 
-//404
 export const patchVotetoArticle = (article_id,number=1) =>{
 
     return dataApi.patch(`/articles/${article_id}`,{"votes":number})
     .catch((err)=>console.log(err));
 }
 
-
-export const getPostsByTopic = (topic)=>{
-    return dataApi.get(`/articles?topic=${topic}`)
+export const getPostsByTopic = (sort_by,order,topic)=>{
+    console.log(sort_by,order,topic)
+    return dataApi.get(`/articles?topic=${topic}&order=${order}&sort_by=${sort_by}`)
     .then(({data})=>{ 
-        return data.articles;
+        console.log("first",data.articles[0]);
+    //     return data.articles;
     })
 }
 
-// 503
 export const getSinglePost = (id)=>{
     return dataApi.get(`articles/${id}`)
     .then(({data})=>{

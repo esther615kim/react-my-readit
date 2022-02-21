@@ -9,6 +9,8 @@ export const ArticleProvider =({children})=>{
 
     const [articles, setArticles] = useState([]);
     const [loading,setLoading] = useState(true);
+    const [order,setOrder] = useState("desc");
+    const [sort_by,setSort_by] =useState("created_at");
 
 
     const setFetchedData = async() =>{
@@ -17,9 +19,9 @@ export const ArticleProvider =({children})=>{
       setLoading(pre=>false);
     } 
 
-    const filterByTopic = async(topic) =>{
-      const updatedByTopic = await getPostsByTopic(topic);
-      setArticles(updatedByTopic); // better to seperate it?
+    const filterByQueries = async(sort_by,order,topic) =>{
+      const updatedArticles = await getPostsByTopic(sort_by,order,topic);
+      setArticles(updatedArticles);
       setLoading(pre=>false);
     } 
 
@@ -38,7 +40,7 @@ export const ArticleProvider =({children})=>{
 
     return(
         <ArticleContext.Provider 
-        value={{articles,loading,setFetchedData,filterByTopic,deleteAPost,updateVotes}}>
+        value={{articles,loading,setFetchedData,setSort_by,setOrder,filterByQueries,order,sort_by,deleteAPost,updateVotes}}>
             {children}
         </ArticleContext.Provider>
     )
