@@ -1,4 +1,5 @@
 {
+  "homepage":"http://esther615kim.github.io/react-my-readit",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -25,6 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "build": "react-scripts build",
     "test": "jest --watch",
     "eject": "react-scripts eject"
@@ -56,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
     "eslint-plugin-react": "^7.28.0",
+    "gh-pages": "^3.2.3",
     "jest": "^27.5.0",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
