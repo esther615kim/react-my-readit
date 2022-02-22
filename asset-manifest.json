@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-my-readit/static/css/main.f32e9301.css",
+    "main.js": "/react-my-readit/static/js/main.cd8d7fb2.js",
+    "index.html": "/react-my-readit/index.html",
+    "main.f32e9301.css.map": "/react-my-readit/static/css/main.f32e9301.css.map",
+    "main.cd8d7fb2.js.map": "/react-my-readit/static/js/main.cd8d7fb2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f32e9301.css",
+    "static/js/main.cd8d7fb2.js"
+  ]
+}
