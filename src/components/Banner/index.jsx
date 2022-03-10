@@ -30,7 +30,7 @@ const Banner = () => {
     return(
     <Link to={`/user/${user.username}`} state={{ from: user.username }} >
       <div style={{display:"flex",alignItems:"center",flexDirection:"column"}}>
-     <Avatar sx={{my:1,width:40,height:40,mx:30}}src={user.avatar_url}/>
+     <Avatar sx={{my:1,width:40,height:40,mx:30}}src={user.avatar_url} alt="avatar"/>
        <Typography variant="caption">{user.username}</Typography>
      </div>
    </Link> 
