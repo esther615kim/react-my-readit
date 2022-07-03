@@ -2,7 +2,7 @@
 <h1 align="center"> MyReadit</h1><p align="center">
 <div align="center">
 <p align="center">React CRUD App </p>
-  <p align="center"><a href="https://esther615kim.github.io/react-my-readit/">gh-pages deployed App (to-be-updated)</a></p>
+  <p align="center"><a href="https://peaceful-galileo-842e26.netlify.app/">gh-pages deployed App </a></p>
 </div>
 
 ### backend repo
